@@ -1,0 +1,105 @@
+/*FIXES Start*/
+
+#root {
+    margin-bottom: 2vh;
+}
+
+
+/*Unsets the fixed column on the root's first child, allowing it to get 100% height*/
+
+#root> :first-child {
+    height: unset;
+}
+
+
+/*Unsets properties forced at body level*/
+
+#root button[type="button"],
+button[type="reset"],
+button[type="submit"],
+div[role="button"] {
+    padding: unset;
+    background-color: unset;
+    border-radius: unset;
+    box-shadow: unset;
+    border: unset;
+}
+
+
+/*Unsets the color change on focus set at body level*/
+
+#root .button:focus,
+#root [type=button]:focus,
+#root [type=reset]:focus,
+#root [type=submit]:focus,
+#root button:focus {
+    color: unset;
+}
+
+#root button:hover {
+    color: #1cabe2;
+}
+
+
+/*Spacing the download/maximize buttons/*/
+
+#root .pt-popover-target,
+.pt-icon-maximize {
+    padding: 7px 20px;
+}
+
+#root .pt-tag-remove:before {
+    color: black;
+}
+
+
+/*Forces additional fonts to fix an issue on OSX: doesn't have Segoe*/
+
+#root div,
+#root a {
+    font-family: "Segoe UI", "Roboto", "Ubuntu", "Open Sans", "sans-serif";
+}
+
+
+/*FIXES END*/
+
+
+/*Browser error*/
+
+#browserError {
+    padding: 50px 30px 30px 30px;
+    width: 100%;
+}
+
+.innerBrowserError {
+    padding: 1px 20px 4px 20px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    background-color: #f0f0f1;
+}
+
+
+/*Browser error*/
+
+
+/*Additional DE Styling*/
+
+.currentFilterContainer {
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+.TableConfig_wrapper {
+    padding-top: 20px;
+    border-top: 2px solid black;
+}
+
+.header_download {
+    display: flex;
+    justify-content: space-between;
+}
+
+.de_vis_toolbar_wrapper {
+    border-top: none !important;
+}
