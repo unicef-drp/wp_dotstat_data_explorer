@@ -48,7 +48,6 @@ Template Name: data_explorer
     while (have_posts()) {
         the_post();
         $api_url =  get_post_meta(get_the_ID(), 'api_url', true);
-        //$api_url_id = get_post_meta(get_the_ID(), 'agency_id', true);
         echo ('<script>SETTINGS_override = ' . $api_url . '</script>');
     }
 
@@ -84,8 +83,6 @@ Template Name: data_explorer
     <div id="root">
     </div>
 </main>
-
-
 
 
 <?php wp_reset_query(); ?>

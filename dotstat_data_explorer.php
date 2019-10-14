@@ -34,7 +34,7 @@ function create_data_explorer()
 		'labels' => $labels,
 		'public' => true,
 		'menu_position' => 22,
-		'supports' => array('title', 'excerpt'),
+		'supports' => array('title'),
 		'taxonomies' => array(''),
 		'menu_icon' => 'dashicons-chart-bar',
 		'has_archive' => false
@@ -43,9 +43,8 @@ function create_data_explorer()
 	register_post_type('data_explorer', $args);
 }
 
-add_action('admin_init', 'my_admin');
-
-function my_admin()
+add_action('admin_init', 'dotstat_data_explorer_add_metabox');
+function dotstat_data_explorer_add_metabox()
 {
 	add_meta_box(
 		'data_explorer_meta_box',
@@ -67,7 +66,6 @@ function display_de_meta_box($de)
 	<table>
 		<tr>
 			<td>API URL</td>
-
 			<td>​<textarea name="api_url_name" rows="10" cols="80"><?php echo $api_url; ?></textarea></td>
 		</tr>
 
@@ -120,13 +118,12 @@ function add_de_fields($de_id, $de_fields)
 		update_post_meta($de_id, 'algolia_public_key', $_POST['algolia_public_key']);
 		update_post_meta($de_id, 'algolia_index_name', $_POST['algolia_index_name']);
 		update_post_meta($de_id, 'algolia_max_results', $_POST['algolia_max_results']);
-
-		//return $post;
 	}
 }
 ?>
 
 <?php
+//Adds the page template from the plugin's path
 add_filter('single_template', 'data_explorer_template');
 
 function data_explorer_template($single)
@@ -134,7 +131,7 @@ function data_explorer_template($single)
 	global $post;
 
 	$deSinglePath = plugin_dir_path(__FILE__) . 'single-data_explorer.php';
-
+	//Add if post type is the right one
 	if ($post->post_type == 'data_explorer') {
 		if (file_exists($deSinglePath)) {
 			return $deSinglePath;
@@ -146,6 +143,7 @@ function data_explorer_template($single)
 
 
 <?php
+//gets the query params
 function custom_query_vars_filter($vars)
 {
 	$vars[] .= 'ag';
@@ -162,6 +160,7 @@ add_filter('query_vars', 'custom_query_vars_filter');
 
 
 <?php
+//Adds the Data explorer javascripts and css
 function add_dataexplorer()
 {
 	if (is_single() && get_post_type() == 'data_explorer') {
@@ -212,6 +211,7 @@ function add_dataexplorer()
 	}
 }
 
+//Adds the resources needed by the wp page
 function add_de()
 {
 	if (is_single() && get_post_type() == 'data_explorer') {

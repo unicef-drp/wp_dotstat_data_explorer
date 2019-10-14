@@ -1,4 +1,5 @@
 /*Searches for related datasets*/
+/*NOT USED AT THE MOMENT*/
 
 //HANDLE THE Enabled/disabled in ALGOLIA.enabled
 var searchClient = null;
