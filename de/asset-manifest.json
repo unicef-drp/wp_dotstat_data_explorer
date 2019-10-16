@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.462b0bd9.chunk.css",
+    "main.js": "/static/js/main.ad777bb6.chunk.js",
+    "main.js.map": "/static/js/main.ad777bb6.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.a8a9905a.js",
+    "runtime~main.js.map": "/static/js/runtime~main.a8a9905a.js.map",
+    "static/css/2.b4c733d1.chunk.css": "/static/css/2.b4c733d1.chunk.css",
+    "static/js/2.92a099de.chunk.js": "/static/js/2.92a099de.chunk.js",
+    "static/js/2.92a099de.chunk.js.map": "/static/js/2.92a099de.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.7dae86da9be3c573fe9fff954f94b68a.js": "/precache-manifest.7dae86da9be3c573fe9fff954f94b68a.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.b4c733d1.chunk.css.map": "/static/css/2.b4c733d1.chunk.css.map",
+    "static/css/main.462b0bd9.chunk.css.map": "/static/css/main.462b0bd9.chunk.css.map",
+    "static/media/data-explorer-logo.png": "/static/media/data-explorer-logo.707f6ef1.png",
+    "static/media/header.less": "/static/media/header.a85ca29b.less",
+    "static/media/blueprint.css": "/static/media/icons-20.c6e7874e.eot",
+    "static/media/variables.less": "/static/media/variables.4d621859.less"
+  }
+}
