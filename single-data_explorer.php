@@ -5,8 +5,6 @@ Template Name: data_explorer
 ?>
 <?php get_header(); ?>
 
-
-
 <main id="mainUpdateBrowser" role="main" style="display:none">
     <?php echo ("global" . $is_IE); ?>
     <div id="browserError">
@@ -15,9 +13,9 @@ Template Name: data_explorer
             <p><strong>Please update your browser and try again</strong></p>
             <i>ES script is needed</i>
         </div>
-        <div>
+    <div>
 </main>
-<main id="main" role="main">
+<main id="main" class="data-explorer" role="main">
     <script>
         //Check if ES6 features are available
         ES6_Error = false;
@@ -84,6 +82,6 @@ Template Name: data_explorer
     </div>
 </main>
 
-
-<?php wp_reset_query(); ?>
-<?php get_footer(); ?>
+<?php 
+wp_reset_query(); 
+get_footer();
