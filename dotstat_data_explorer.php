@@ -1,9 +1,9 @@
 <?php
 
 /**
- * Plugin Name: data_explorer
+ * Plugin Name: Data Explorer
  * Description: A dotstat data explorer wrapper.
- * Version: 1.0
+ * Version: 1.0.1
  * Author: Daniele Olivotti
  */
 
@@ -12,22 +12,23 @@
 *   CUSTOM POST TYPE DataExplorer
 /* ------------------------------------------------------------------------- */
 
-add_action('init', 'create_data_explorer');
+//Create custom post type/endpoints
+add_action('init', 'de_create_data_explorer');
 
-function create_data_explorer()
+function de_create_data_explorer()
 {
 	$labels = array(
-		'name'               => __('Data explorers', 'data_explorer'),
-		'singular_name'      => __('Data explorer', 'data_explorer'),
-		'add_new'            => __('Add new', 'data_explorer'),
-		'add_new_item'       => __('Add New de', 'data_explorer'),
-		'edit_item'          => __('Edit de', 'data_explorer'),
-		'new_item'           => __('New de', 'data_explorer'),
-		'all_items'          => __('All de', 'data_explorer'),
-		'view_item'          => __('View de', 'data_explorer'),
-		'search_items'       => __('Search de', 'data_explorer'),
-		'not_found'          => __('De not found', 'data_explorer'),
-		'not_found_in_trash' => __('De not found in the trash', 'data_explorer'),
+		'name'               => __('Data Explorers', 'data_explorer'),
+		'singular_name'      => __('Data Explorer', 'data_explorer'),
+		'add_new'            => __('Add New', 'data_explorer'),
+		'add_new_item'       => __('Add New Endpoint', 'data_explorer'),
+		'edit_item'          => __('Edit Endpoint', 'data_explorer'),
+		'new_item'           => __('New Endpoint', 'data_explorer'),
+		'all_items'          => __('All Endpoints', 'data_explorer'),
+		'view_item'          => __('View Endpoint', 'data_explorer'),
+		'search_items'       => __('Search Endpoints', 'data_explorer'),
+		'not_found'          => __('Endpoint not found', 'data_explorer'),
+		'not_found_in_trash' => __('Endpoint not found in the trash', 'data_explorer'),
 	);
 
 	$args = array(
@@ -43,42 +44,39 @@ function create_data_explorer()
 	register_post_type('data_explorer', $args);
 }
 
-add_action('admin_init', 'dotstat_data_explorer_add_metabox');
-function dotstat_data_explorer_add_metabox()
+//Add settings
+add_action('admin_init', 'de_add_metabox');
+
+function de_add_metabox()
 {
 	add_meta_box(
 		'data_explorer_meta_box',
 		'Data explorer details',
-		'display_de_meta_box',
+		'de_display_meta_box',
 		'data_explorer'
 	);
 }
 
-?>
-
-<?php
-function display_de_meta_box($de)
+function de_display_meta_box($de)
 {
 	$api_url = get_post_meta($de->ID, 'api_url', true);
 	$backtype_radio_value = get_post_meta($de->ID, 'backtype_radio_value', true);
 	?>
-
 	<table>
 		<tr>
 			<td>API URL</td>
-			<td>​<textarea name="api_url_name" rows="10" cols="80"><?php echo $api_url; ?></textarea></td>
+			<td>​<textarea name="de_api_url_name" rows="10" cols="80"><?php echo $api_url; ?></textarea></td>
 		</tr>
-
 		<tr>
 			<td>Backend</td>
 			<td>
 				<label>
-					<input type="radio" name="backtype_radio_value" value="DOTSTAT" <?php checked($backtype_radio_value, 'DOTSTAT'); ?>>
+					<input type="radio" name="de_backtype_radio_value" value="DOTSTAT" <?php checked($backtype_radio_value, 'DOTSTAT'); ?>>
 					<?php esc_attr_e('DOTSTAT'); ?>
 				</label>
 				<br />
 				<label>
-					<input type="radio" name="backtype_radio_value" value="FUSION" <?php checked($backtype_radio_value, 'FUSION'); ?>>
+					<input type="radio" name="de_backtype_radio_value" value="FUSION" <?php checked($backtype_radio_value, 'FUSION'); ?>>
 					<?php esc_attr_e('FUSION'); ?>
 				</label>
 			</td>
@@ -86,28 +84,26 @@ function display_de_meta_box($de)
 	</table>
 <?php
 }
-?>
 
+//Save from settings fields
+add_action('save_post', 'de_add_fields', 10, 2);
 
-<?php
-add_action('save_post', 'add_de_fields', 10, 2);
-
-function add_de_fields($de_id, $de_fields)
+function de_add_fields($de_id, $de_fields)
 {
 	// Check post type for movie reviews
 	if ($de_fields->post_type == 'data_explorer') {
 		// Store data in post meta table if present in post data
-		if (isset($_POST['api_url_name']) && $_POST['api_url_name'] != '') {
-			update_post_meta($de_id, 'api_url', $_POST['api_url_name']);
+		if (isset($_POST['de_api_url_name']) && $_POST['de_api_url_name'] != '') {
+			update_post_meta($de_id, 'api_url', $_POST['de_api_url_name']);
 		}
 
-		if (isset($_POST['backtype_radio_value'])) { // Input var okay.
-			update_post_meta($de_id, 'backtype_radio_value', sanitize_text_field(wp_unslash($_POST['backtype_radio_value']))); // Input var okay.
+		if (isset($_POST['de_backtype_radio_value'])) { // Input var okay.
+			update_post_meta($de_id, 'backtype_radio_value', sanitize_text_field(wp_unslash($_POST['de_backtype_radio_value']))); // Input var okay.
 		} else {
 			update_post_meta($de_id, 'backtype_radio_value', 'DOTSTAT');
 		}
 
-
+		// @TODO: missing from the settings page above
 		if (isset($_POST['algolia_search_enabled'])) {
 			update_post_meta($de_id, 'algolia_search_enabled', "1");
 		} else {
@@ -120,13 +116,11 @@ function add_de_fields($de_id, $de_fields)
 		update_post_meta($de_id, 'algolia_max_results', $_POST['algolia_max_results']);
 	}
 }
-?>
 
-<?php
 //Adds the page template from the plugin's path
-add_filter('single_template', 'data_explorer_template');
+add_filter('single_template', 'de_data_explorer_template');
 
-function data_explorer_template($single)
+function de_data_explorer_template($single)
 {
 	global $post;
 
@@ -139,12 +133,11 @@ function data_explorer_template($single)
 	}
 	return $single;
 }
-?>
 
+//Gets the query params
+add_filter('query_vars', 'de_custom_query_vars_filter');
 
-<?php
-//gets the query params
-function custom_query_vars_filter($vars)
+function de_custom_query_vars_filter($vars)
 {
 	$vars[] .= 'ag';
 	$vars[] .= 'df';
@@ -155,13 +148,11 @@ function custom_query_vars_filter($vars)
 
 	return $vars;
 }
-add_filter('query_vars', 'custom_query_vars_filter');
-?>
 
-
-<?php
 //Adds the Data explorer javascripts and css
-function add_dataexplorer()
+add_action('wp_enqueue_scripts', 'de_add_data_explorer');
+
+function de_add_data_explorer()
 {
 	if (is_single() && get_post_type() == 'data_explorer') {
 
@@ -177,13 +168,11 @@ function add_dataexplorer()
 		$js_list = glob($static_path . "js/*.js");
 		//att the styles
 		for ($i = 0; $i < count($css_list); $i++) {
-			//remove the main as it seems to contain body elements already present in the howsting Wordpress page
+			//remove the main as it seems to contain body elements already present in the hosting Wordpress page
 			if (strpos(basename($css_list[$i]), "main") === false) {
 				wp_enqueue_style('de_style' . $i, $css_url . basename($css_list[$i]));
 			}
 		}
-
-		wp_enqueue_style('de_style2' . $i, 'C:\xampp\htdocs\wp-content\plugins\wp_dotstat_data_explorer/de/static/css/2.736207e5.chunk.css.map');
 
 		//add the js files in the same order they're added by react in the main page
 		$js_load_order = array();
@@ -212,7 +201,10 @@ function add_dataexplorer()
 }
 
 //Adds the resources needed by the wp page
-function add_de()
+//add the scripts and css only if the post type is data_explorer
+add_action('wp_enqueue_scripts', 'de_enqueue_style');
+
+function de_enqueue_style()
 {
 	if (is_single() && get_post_type() == 'data_explorer') {
 
@@ -223,9 +215,3 @@ function add_de()
 		// wp_enqueue_script('related_search', $js_url . 'related_search.js', array('jquery', 'algoliasearchLite', 'algolia_instantsearch'), NULL, true);
 	}
 }
-
-
-//add the scripts and css only if the post type is data_explorer
-add_action('wp_enqueue_scripts', 'add_de');
-add_action('wp_enqueue_scripts', 'add_dataexplorer');
-?>

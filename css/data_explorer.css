@@ -15,9 +15,9 @@
 /*Unsets properties forced at body level*/
 
 #root button[type="button"],
-button[type="reset"],
-button[type="submit"],
-div[role="button"] {
+.data-explorer button[type="reset"],
+.data-explorer button[type="submit"],
+.data-explorer div[role="button"] {
     padding: unset;
     background-color: unset;
     border-radius: unset;
