@@ -4,6 +4,8 @@
     margin-bottom: 2vh;
 }
 
+/*Overrides the global path,svg {fill: currentColor}*/
+#root path[fill="none"]{fill:none;}
 
 /*Unsets the fixed column on the root's first child, allowing it to get 100% height*/
 
