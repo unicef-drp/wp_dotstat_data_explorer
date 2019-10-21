@@ -15,7 +15,7 @@
     src: url(../media/icons-20.c6e7874e.eot?#iefix) format("embedded-opentype"), url(../media/icons-20.9baec0ab.woff) format("woff"), url(../media/icons-20.0f714976.ttf) format("truetype")
 }
 
-.data-explorer hr {
+main hr {
     margin: 20px 0;
     border: none;
     border-bottom: 1px solid rgba(16, 22, 26, .15)
@@ -33,16 +33,7 @@
     background: rgba(125, 188, 255, .6)
 }
 
-.data-explorer {
-    text-transform: none;
-    line-height: 1.28581;
-    letter-spacing: 0;
-    font-size: 14px;
-    font-weight: 400;
-    color: #182026
-}
-
-.data-explorer small {
+main small {
     font-size: 12px
 }
 
@@ -52,12 +43,12 @@
     font-size: smaller
 }
 
-.data-explorer h1 {
+main h1 {
     font-size: 40px
 }
 
-.data-explorer h1,
-.data-explorer h2 {
+main h1,
+main h2 {
     color: #182026;
     font-weight: 600;
     margin: 0 0 10px;
@@ -65,11 +56,11 @@
     line-height: .8em
 }
 
-.data-explorer h2 {
+main h2 {
     font-size: 27px
 }
 
-.data-explorer h3 {
+main h3 {
     color: #182026;
     font-weight: 600;
     margin: 0 0 10px;
@@ -78,12 +69,12 @@
     font-size: 24px
 }
 
-.data-explorer h4 {
+main h4 {
     font-size: 20px
 }
 
-.data-explorer h4,
-.data-explorer h5 {
+main h4,
+main h5 {
     color: #182026;
     font-weight: 600;
     margin: 0 0 10px;
@@ -91,11 +82,11 @@
     line-height: .9em
 }
 
-.data-explorer h5 {
+main h5 {
     font-size: 17px
 }
 
-.data-explorer h6 {
+main h6 {
     color: #182026;
     font-weight: 600;
     margin: 0 0 10px;
@@ -138,21 +129,21 @@
     font-size: 14px
 }
 
-.data-explorer p {
+main p {
     margin: 0 0 10px;
     padding: 0
 }
 
-.data-explorer a {
+main a {
     text-decoration: none
 }
 
-.data-explorer a,
-.data-explorer a:hover {
+main a,
+main a:hover {
     color: #106ba3
 }
 
-.data-explorer a:hover {
+main a:hover {
     cursor: pointer;
     text-decoration: underline
 }
@@ -235,7 +226,7 @@ pre>code {
     background: transparent
 }
 
-.data-explorer blockquote {
+main blockquote {
     line-height: 1.5;
     font-size: 16px;
     margin: 0 0 10px;
@@ -243,7 +234,7 @@ pre>code {
     padding: 0 20px
 }
 
-.data-explorer blockquote p:last-child {
+main blockquote p:last-child {
     margin-bottom: 0
 }
 
@@ -251,8 +242,8 @@ pre>code {
     border-color: rgba(115, 134, 148, .5)
 }
 
-.data-explorer ol,
-.data-explorer ul {
+main ol,
+main ul {
     margin: 10px 0;
     padding-left: 40px
 }
@@ -317,7 +308,7 @@ pre>code {
     color: #f5f8fa
 }
 
-.data-explorer :focus {
+main :focus {
     outline: 2px auto rgba(19, 124, 189, .5);
     outline-offset: 2px;
     -moz-outline-radius: 6px
@@ -4566,7 +4557,7 @@ label.pt-label.pt-disabled .pt-text-muted {
     min-height: 19px
 }
 
-.data-explorer form {
+#main form {
     display: block
 }
 
