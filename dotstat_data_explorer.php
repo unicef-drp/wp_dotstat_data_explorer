@@ -102,18 +102,6 @@ function de_add_fields($de_id, $de_fields)
 		} else {
 			update_post_meta($de_id, 'backtype_radio_value', 'DOTSTAT');
 		}
-
-		// @TODO: missing from the settings page above
-		if (isset($_POST['algolia_search_enabled'])) {
-			update_post_meta($de_id, 'algolia_search_enabled', "1");
-		} else {
-			update_post_meta($de_id, 'algolia_search_enabled', "0");
-		}
-
-		update_post_meta($de_id, 'algolia_app_name', $_POST['algolia_app_name']);
-		update_post_meta($de_id, 'algolia_public_key', $_POST['algolia_public_key']);
-		update_post_meta($de_id, 'algolia_index_name', $_POST['algolia_index_name']);
-		update_post_meta($de_id, 'algolia_max_results', $_POST['algolia_max_results']);
 	}
 }
 
@@ -157,7 +145,7 @@ function de_add_data_explorer()
 	if (is_single() && get_post_type() == 'data_explorer') {
 
 		$js_url = plugins_url('js/', __FILE__);
-		wp_enqueue_script('de_settings', $js_url . 'de_settings/settings.js', NULL, 1.02, true);
+		wp_enqueue_script('de_settings', $js_url . 'de_settings/settings.js', NULL, 1.03, true);
 
 		$static_path = plugin_dir_path(__FILE__) . 'de/static/';
 

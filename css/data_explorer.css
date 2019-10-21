@@ -16,10 +16,16 @@
 
 #root button[type="button"],
 .data-explorer button[type="reset"],
-.data-explorer button[type="submit"],
-.data-explorer div[role="button"] {
+.data-explorer button[type="submit"]{
     padding: unset;
     background-color: unset;
+    border-radius: unset;
+    box-shadow: unset;
+    border: unset;
+}
+
+.data-explorer div[role="button"] {
+    padding: 2px 4px 2px 4px;
     border-radius: unset;
     box-shadow: unset;
     border: unset;
@@ -102,4 +108,10 @@
 
 .de_vis_toolbar_wrapper {
     border-top: none !important;
+}
+
+.div_dataLimited{
+    background-color:#f0f0f1;
+    padding: 3px 15px;
+    border-radius: 6px;
 }
