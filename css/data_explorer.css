@@ -118,3 +118,26 @@
     margin:15px 0 5px 0;
     border-radius: 6px;
 }
+
+/*indicator links, from DE to Indicator Profile*/
+.indicatorEntry{
+    display: list-item;
+    background-color: rgba(19, 124, 189, 0.15);
+    color:#106ba3;
+    padding:2px 6px;
+    margin:5px;
+    width: fit-content;
+    border-radius: 3px;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .goToIndic{
+    font-weight: bold;
+  }
+  .div_IndicatorLink{
+    background-color:#f0f0f1;
+    padding: 3px 15px;
+    margin:15px 0 5px 0;
+    border-radius: 6px;
+  }
