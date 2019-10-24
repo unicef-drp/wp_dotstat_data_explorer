@@ -4,8 +4,13 @@
     margin-bottom: 2vh;
 }
 
+
 /*Overrides the global path,svg {fill: currentColor}*/
-#root path[fill="none"]{fill:none;}
+
+#root path[fill="none"] {
+    fill: none;
+}
+
 
 /*Unsets the fixed column on the root's first child, allowing it to get 100% height*/
 
@@ -18,8 +23,8 @@
 
 #root button[type="button"],
 .data-explorer button[type="reset"],
-.data-explorer button[type="submit"]{
-    padding: unset;
+.data-explorer button[type="submit"] {
+    /*padding: unset;*/
     background-color: unset;
     border-radius: unset;
     box-shadow: unset;
@@ -59,6 +64,18 @@
 #root .pt-tag-remove:before {
     color: black;
 }
+
+#root .pt-tag-remove {
+    font-family: "Icons16", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    font-style: normal;
+    opacity: 0.8 !important;
+    padding: 2px;
+}
+
+
+/*#root [class="pt-tag-remove"]{background-color: blueviolet;}*/
 
 
 /*Forces additional fonts to fix an issue on OSX: doesn't have Segoe*/
@@ -112,32 +129,35 @@
     border-top: none !important;
 }
 
-.div_dataLimited{
-    background-color:#f0f0f1;
+.div_dataLimited {
+    background-color: #f0f0f1;
     padding: 3px 15px;
-    margin:15px 0 5px 0;
+    margin: 15px 0 5px 0;
     border-radius: 6px;
 }
 
+
 /*indicator links, from DE to Indicator Profile*/
-.indicatorEntry{
+
+.indicatorEntry {
     display: list-item;
     background-color: rgba(19, 124, 189, 0.15);
-    color:#106ba3;
-    padding:2px 6px;
-    margin:5px;
+    color: #106ba3;
+    padding: 2px 6px;
+    margin: 5px;
     width: fit-content;
     border-radius: 3px;
     cursor: pointer;
     list-style: none;
-  }
+}
 
-  .goToIndic{
+.goToIndic {
     font-weight: bold;
-  }
-  .div_IndicatorLink{
-    background-color:#f0f0f1;
+}
+
+.div_IndicatorLink {
+    background-color: #f0f0f1;
     padding: 3px 15px;
-    margin:15px 0 5px 0;
+    margin: 15px 0 5px 0;
     border-radius: 6px;
-  }
+}
