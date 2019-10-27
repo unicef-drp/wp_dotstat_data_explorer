@@ -67,7 +67,7 @@ Template Name: data_explorer
         '$agency_id' => $qs_agency,
         '$dataflow' => $qs_dataflow,
         '$version' =>  $qs_version,
-        '$dataquery' => $dataquery,
+        '$dataquery' => str_replace(" ", "+", $dataquery),
         '$startPeriod' => $startPeriod,
         '$endPeriod' => $endPeriod,
         '$backendId' => $backendId
