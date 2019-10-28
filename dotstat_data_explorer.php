@@ -157,9 +157,9 @@ function de_add_data_explorer()
 		//att the styles
 		for ($i = 0; $i < count($css_list); $i++) {
 			//remove the main as it seems to contain body elements already present in the hosting Wordpress page
-			if (strpos(basename($css_list[$i]), "main") === false) {
+			//if (strpos(basename($css_list[$i]), "main") === false) {
 				wp_enqueue_style('de_style' . $i, $css_url . basename($css_list[$i]));
-			}
+			//}
 		}
 
 		//add the js files in the same order they're added by react in the main page
@@ -197,7 +197,7 @@ function de_enqueue_style()
 	if (is_single() && get_post_type() == 'data_explorer') {
 
 		$css_url = plugins_url('css/', __FILE__);
-		wp_enqueue_style('data_expl_css', $css_url . 'data_explorer.css?v=2.04');
+		wp_enqueue_style('data_expl_css', $css_url . 'data_explorer.css?v=2.05');
 		
 		// $js_url = plugins_url('js/', __FILE__);
 		// wp_enqueue_script('related_search', $js_url . 'related_search.js', array('jquery', 'algoliasearchLite', 'algolia_instantsearch'), NULL, true);

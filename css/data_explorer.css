@@ -133,7 +133,8 @@
 /*Limited data message box */
 
 .div_dataLimited {
-    background-color: #f0f0f1;
+    background-color: #f5cccb;
+    color:#856162;
     padding: 3px 15px;
     margin: 15px 0 5px 0;
     border-radius: 6px;
