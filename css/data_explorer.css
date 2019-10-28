@@ -129,11 +129,33 @@
     border-top: none !important;
 }
 
+
+/*Limited data message box */
+
 .div_dataLimited {
     background-color: #f0f0f1;
     padding: 3px 15px;
     margin: 15px 0 5px 0;
     border-radius: 6px;
+}
+
+.dataLimited_msgBox_trans {
+    -webkit-transition: 1.0s;
+    -moz-transition: 1.0s;
+    -o-transition: 1.0s;
+    transition: 1.0s;
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+/*Copyright footer*/
+
+#root .div_footer {
+    color: #7A7A7A;
+    font-size: 16px;
+    margin-left: 10px;
+    margin-top: 5px;
 }
 
 
