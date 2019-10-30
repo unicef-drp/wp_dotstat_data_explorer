@@ -11,7 +11,8 @@ var SETTINGS = {
         }
     },
     chart: { url: "", source: "", options: { base: { height: 400 }, axis: { x: { font: { family: "'Segoe UI'" } }, y: { linear: { step: 5 }, font: { family: "'Segoe UI'" } } }, serie: { annotation: { font: { family: "'Segoe UI'" } }, tooltip: { font: { family: "'Segoe UI'" } } } }, size: { height: 400 } }, i18n: { localeId: "en", locales: { en: { id: "en", delimiters: { thousands: ",", decimal: "." } } } },
-    unicef: { "indicatorProfileUrl": "../../../indicator-profile" }
+    //unicef: { "indicatorProfileUrl": "../../../indicator-profile" }
+    unicef:{}
 }
 
 var I18N = {
@@ -37,6 +38,7 @@ var I18N = {
         "de.visualisation.toolbar.action.download": "Download",
         "de.visualisation.toolbar.action.download.csv.selection": "Selection in CSV",
         "de.visualisation.toolbar.action.download.csv.all": "Full data in CSV",
+        "de.visualisation.toolbar.action.help":"Help",
         "vx.no.data": "No data", "vx.filters.current.title": "Selected filters",
         "vx.filters.current.clear": "Clear all filters",
         "de.table.layout.apply": "Apply",
@@ -61,3 +63,4 @@ var I18N = {
 
 
 SETTINGS.sdmx.datasources = SETTINGS_override;
+SETTINGS.unicef = unicef_settings;

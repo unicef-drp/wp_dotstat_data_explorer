@@ -197,9 +197,78 @@ function de_enqueue_style()
 	if (is_single() && get_post_type() == 'data_explorer') {
 
 		$css_url = plugins_url('css/', __FILE__);
-		wp_enqueue_style('data_expl_css', $css_url . 'data_explorer.css?v=2.05');
+		wp_enqueue_style('data_expl_css', $css_url . 'data_explorer.css?v=2.06');
 		
 		// $js_url = plugins_url('js/', __FILE__);
 		// wp_enqueue_script('related_search', $js_url . 'related_search.js', array('jquery', 'algoliasearchLite', 'algolia_instantsearch'), NULL, true);
 	}
 }
+
+
+
+
+
+/*Plugin's settings*/
+function de_settings_page()
+{
+	add_submenu_page(
+		'options-general.php', // top level menu page
+		'Data Explorer Settings Page', // title of the settings page
+		'Data Explorer', // title of the submenu
+		'manage_options', // capability of the user to see this page
+		'de-settings-page', // slug of the settings page
+		'de_settings_page_html' // callback function when rendering the page
+	);
+	add_action('admin_init', 'de_settings_init');
+}
+add_action('admin_menu', 'de_settings_page');
+
+function de_settings_page_html()
+{
+	// check user capabilities
+	/*if (!current_user_can('manage_options')) {
+		return;
+	} */ ?>
+
+	<div class="wrap">
+		<?php settings_errors(); ?>
+		<form method="POST" action="options.php">
+			<?php settings_fields('de-settings-page'); ?>
+			<?php do_settings_sections('de-settings-page') ?>
+			<?php submit_button(); ?>
+		</form>
+	</div>
+<?php
+}
+
+
+/*Groups together options, I need just one group for this plugin*/
+function de_settings_init()
+{
+	add_settings_section(
+		'de-settings-section', // id of the section
+		'Data Explorer Settings', // title to be displayed
+		'', // callback function to be called when opening section, currently empty
+		'de-settings-page' // page on which to display the section
+	);
+
+
+	// register the setting (option group, setting id)
+	register_setting('de-settings-page', 'de_indicator_profile_url');
+	register_setting('de-settings-page', 'de_help_url');
+	//id of the settings field, title, callback function, page on which settings display, section on which to show settings
+	add_settings_field('de_indicator_profile_url', 'Indicator profile URL', 'de_indicator_profile_url_callb', 'de-settings-page', 'de-settings-section');
+	add_settings_field('de_help_url', 'Help URL', 'de_help_url_callb', 'de-settings-page', 'de-settings-section');
+}
+
+function de_indicator_profile_url_callb()
+{
+	$de_indicator_profile_url = esc_attr(get_option('de_indicator_profile_url', ''));
+	echo ("<div><input id=\"de_indicator_profile_url\" type=\"text\" name=\"de_indicator_profile_url\" size=\"100\" value=\"".$de_indicator_profile_url."\"></div>");
+}
+function de_help_url_callb()
+{
+	$de_help_url = esc_attr(get_option('de_help_url', ''));
+	echo ("<div><input id=\"de_help_url\" type=\"text\" name=\"de_help_url\" size=\"80\" value=\"".$de_help_url."\"></div>");
+}
+?>
