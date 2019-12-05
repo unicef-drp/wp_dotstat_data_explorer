@@ -53,13 +53,10 @@
     color: #1cabe2;
 }
 
-
-/*Spacing the download/maximize buttons/*/
-
-#root .pt-popover-target,
-.pt-icon-maximize {
-    padding: 7px 20px;
-}
+/*#root .pt-popover-target {
+    padding: 1px 1px;
+    height: 100%;
+}*/
 
 #root .pt-tag-remove:before {
     color: black;
@@ -127,7 +124,13 @@
 
 .de_vis_toolbar_wrapper {
     border-top: none !important;
+    
 }
+
+.de_toolbar_items_wrapper{
+    flex-wrap: nowrap;
+}
+
 
 
 /*Limited data message box */

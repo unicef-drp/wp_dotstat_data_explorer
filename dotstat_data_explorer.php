@@ -197,7 +197,7 @@ function de_enqueue_style()
 	if (is_single() && get_post_type() == 'data_explorer') {
 
 		$css_url = plugins_url('css/', __FILE__);
-		wp_enqueue_style('data_expl_css', $css_url . 'data_explorer.css?v=2.06');
+		wp_enqueue_style('data_expl_css', $css_url . 'data_explorer.css?v=2.07');
 		
 		// $js_url = plugins_url('js/', __FILE__);
 		// wp_enqueue_script('related_search', $js_url . 'related_search.js', array('jquery', 'algoliasearchLite', 'algolia_instantsearch'), NULL, true);
