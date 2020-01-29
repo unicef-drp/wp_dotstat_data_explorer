@@ -2,7 +2,7 @@ var SETTINGS = {
     sdmx: {
         range: [0, 1e3],
         attributes: { flags: ["OBS_STATUS"], footnotes: ["TIME_FORMAT"], prefscale: "PREF_SCALE", decimals: "DECIMALS" },
-        period: { boundaries: [1970, 2020], default: [2018, 2018] },
+        period: { boundaries: [1970, new Date().getFullYear()], default: [2018, new Date().getFullYear()] },
         datasources: {
             // ILO: { url: "https://ilo.org/ilostat-test/sdmx/ws/rest", hasRangeHeader: !0, supportsReferencePartial: !1 },
             //UNICEF: { url: "https://api.data.unicef.org/sdmx/Rest", hasRangeHeader: !0, supportsReferencePartial: !1 },

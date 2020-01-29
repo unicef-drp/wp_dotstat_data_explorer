@@ -13,7 +13,7 @@ Template Name: data_explorer
             <p><strong>Please update your browser and try again</strong></p>
             <i>ES script is needed</i>
         </div>
-    <div>
+        <div>
 </main>
 <main id="main" class="data-explorer" role="main">
     <script>
@@ -49,7 +49,7 @@ Template Name: data_explorer
         echo ('<script>SETTINGS_override = ' . $api_url . '</script>');
 
         //$unicef_settings =  get_post_meta(get_the_ID(), 'unicef_settings', true);
-        
+
         //$indicator_profile_url = get_post_meta(get_the_ID(), 'indicator_profile_url', true);
         //$help_url = get_post_meta(get_the_ID(), 'help_url', true);
 
@@ -59,7 +59,7 @@ Template Name: data_explorer
         $indicator_profile_url = esc_attr(get_option('de_indicator_profile_url', ''));
         $help_url = esc_attr(get_option('de_help_url', ''));
 
-        $unicef_settings ='{"indicatorProfileUrl": "'.$indicator_profile_url.'", "helpUrl": "'.$help_url.'" }';
+        $unicef_settings = '{"indicatorProfileUrl": "' . $indicator_profile_url . '", "helpUrl": "' . $help_url . '" }';
 
         //$unicef_settings =  '{"indicatorProfileUrl": "../../../indicator-profile", "helpUrl": "http://www.ansa.it" }';
         echo ('<script>unicef_settings = ' . $unicef_settings . '</script>');
@@ -74,6 +74,9 @@ Template Name: data_explorer
 
     $startPeriod = sanitize_text_field(get_query_var('startPeriod'));
     $endPeriod = sanitize_text_field(get_query_var('endPeriod'));
+    if ($endPeriod == "") {
+        $endPeriod = date("Y");
+    }
 
     $backendId =  get_post_meta(get_the_ID(), 'backtype_radio_value', true);
 
@@ -98,6 +101,6 @@ Template Name: data_explorer
     </div>
 </main>
 
-<?php 
-wp_reset_query(); 
+<?php
+wp_reset_query();
 get_footer();
