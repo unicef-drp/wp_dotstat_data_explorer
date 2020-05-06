@@ -196,7 +196,7 @@ function de_enqueue_style()
 {
 	if (is_single() && get_post_type() == 'data_explorer') {
 
-		$js_version = 1.16;
+		$js_version = 1.17;
 		
 		$css_url = plugins_url('css/', __FILE__);
 		wp_enqueue_style('data_expl_css', $css_url . 'data_explorer.css', array(), $js_version);
