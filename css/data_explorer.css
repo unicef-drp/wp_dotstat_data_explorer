@@ -124,7 +124,10 @@
 
 .de_vis_toolbar_wrapper {
     border-top: none !important;
-    
+}
+
+.div_lastnobs{
+    margin-bottom: 20px;
 }
 
 .de_toolbar_items_wrapper{
@@ -187,3 +190,4 @@
     margin: 15px 0 5px 0;
     border-radius: 6px;
 }
+

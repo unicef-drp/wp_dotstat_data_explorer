@@ -48,20 +48,11 @@ Template Name: data_explorer
         $api_url =  get_post_meta(get_the_ID(), 'api_url', true);
         echo ('<script>SETTINGS_override = ' . $api_url . '</script>');
 
-        //$unicef_settings =  get_post_meta(get_the_ID(), 'unicef_settings', true);
-
-        //$indicator_profile_url = get_post_meta(get_the_ID(), 'indicator_profile_url', true);
-        //$help_url = get_post_meta(get_the_ID(), 'help_url', true);
-
-        /*$indicator_profile_url = "../../../indicator-profile";
-        $help_url = "http://www.ansa.it";*/
-
         $indicator_profile_url = esc_attr(get_option('de_indicator_profile_url', ''));
         $help_url = esc_attr(get_option('de_help_url', ''));
 
         $unicef_settings = '{"indicatorProfileUrl": "' . $indicator_profile_url . '", "helpUrl": "' . $help_url . '" }';
 
-        //$unicef_settings =  '{"indicatorProfileUrl": "../../../indicator-profile", "helpUrl": "http://www.ansa.it" }';
         echo ('<script>unicef_settings = ' . $unicef_settings . '</script>');
     }
 

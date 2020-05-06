@@ -27,6 +27,7 @@ var I18N = {
         "de.side.filters.action": "Filters",
         "de.filter.period.title": "Select time period",
         "de.filter.period.tag": "{min} - {max}",
+        "de.filter.period.lastnobs":"Show latest data only",
         "de.visualisation.toolbar.show": "Show:",
         "de.visualisation.toolbar.table": "Table",
         "de.visualisation.toolbar.chart": "Chart",
