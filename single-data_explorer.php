@@ -88,6 +88,31 @@ Template Name: data_explorer
     echo ($script_dataflow);
     ?>
 
+    <!--Page title-->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="block block--heading resource-heading resource-heading--archive">
+                <div class="block__background block__background--small" style="
+            background-color:#f1f1f1;">
+                </div>
+                <div class="block__content">
+                    <div class="row center-xs">
+                        <div class="col-xs-12 col-lg-8">
+                            <div class="block--heading__content box">
+                                <div class="block--heading__card card">
+                                    <div class="block--heading__tags block--heading__card--middle">
+                                        <h1 class="no-margin"><?php echo(get_post_meta(get_the_ID(), 'de_page_title', true)); ?></h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End page title-->
+
     <div id="root">
     </div>
 
