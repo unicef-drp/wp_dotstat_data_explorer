@@ -113,9 +113,12 @@
     border-radius: 6px;
 }
 
+
 .TableConfig_wrapper {
     padding-top: 20px;
     border-top: 2px solid black;
+    margin-top: 20px;
+    
 }
 
 .header_download {
@@ -247,7 +250,7 @@
     color: #fff;
     position: fixed;
     right: 80px;
-    bottom: 5px;
+    bottom: 140px;
     max-width: 120px;
 }
 
@@ -271,4 +274,27 @@
 
 #div_de_help .material-icons.md-18 {
     font-size: 18px;
+}
+
+
+/*dataflow navigator*/
+.dfNav_item{
+    background-color:#f0f0f1;
+    text-align: center;
+    margin-bottom: 12px;
+}
+
+
+.dfNav_dfnametop{
+    padding: 6px 6px 6px 6px;
+}
+
+.df_nav_dfname{
+    padding: 3px 6px 3px 6px;
+    font-weight: 900;
+}
+
+.dfNav_link{
+    color:#0297c9;
+    padding: 6px 6px 6px 6px;
 }
