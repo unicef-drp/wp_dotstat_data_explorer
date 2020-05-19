@@ -42,6 +42,8 @@ var I18N = {
         "de.visualisation.toolbar.action.help":"Help",
         "vx.no.data": "No data", "vx.filters.current.title": "Selected filters",
         "vx.filters.current.clear": "Clear all filters",
+        "vx.filters.filterdata":  "Filter data",
+        "vx.filters.close":  "Close",
         "de.table.layout.apply": "Apply",
         "de.table.layout.cancel": "Cancel",
         "de.table.layout.value.one": "In the subtitle",

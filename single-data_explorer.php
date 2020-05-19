@@ -118,9 +118,10 @@ Template Name: data_explorer
 
 
     <?php if ($help_url != null && $help_url != "") { ?>
+
         <div id="div_de_help" class="pull-right">
             <div class="closebtn" onclick="document.getElementById('div_de_help').style.display='none';"><i class="material-icons md-18">clear</i></div>
-            <a href="<?php echo ($help_url) ?>"><i class="material-icons">help</i></a><a href="<?php echo ($help_url) ?>"><span>Need help using this tool?</span>
+            <a href="<?php echo ($help_url) ?>"><i class="material-icons">help</i></a><a href="<?php echo ($help_url) ?>"><span class="help_text">Need help using this tool?</span>
             </a>
         </div>
     <?php } ?>

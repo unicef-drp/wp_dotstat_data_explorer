@@ -113,12 +113,10 @@
     border-radius: 6px;
 }
 
-
 .TableConfig_wrapper {
     padding-top: 20px;
     border-top: 2px solid black;
     margin-top: 20px;
-    
 }
 
 .header_download {
@@ -232,12 +230,6 @@
 
 /*Help box*/
 
-#div_de_help_cnt {
-    position: fixed;
-    right: 80px;
-    bottom: 5px;
-    max-width: 120px;
-}
 
 #div_de_help {
     background-color: #1cabe2;
@@ -251,7 +243,24 @@
     position: fixed;
     right: 80px;
     bottom: 140px;
-    max-width: 120px;
+}
+
+@media only screen and (min-width: 700px) {
+    .help_text {
+        display: inline-block;
+    }
+    #div_de_help {
+        max-width: 120px;
+    }
+}
+
+@media only screen and (max-width: 701px) {
+    .help_text {
+        display: none !important;
+    }
+    #div_de_help {
+        max-width: 80px;
+    }
 }
 
 #div_de_help a {
@@ -270,6 +279,7 @@
     top: 0px;
     right: 4px;
     cursor: pointer;
+    margin:2px;
 }
 
 #div_de_help .material-icons.md-18 {
@@ -278,23 +288,44 @@
 
 
 /*dataflow navigator*/
-.dfNav_item{
-    background-color:#f0f0f1;
+
+.dfNav_item {
+    background-color: #f0f0f1;
     text-align: center;
     margin-bottom: 12px;
 }
 
-
-.dfNav_dfnametop{
+.dfNav_dfnametop {
     padding: 6px 6px 6px 6px;
 }
 
-.df_nav_dfname{
+.df_nav_dfname {
     padding: 3px 6px 3px 6px;
     font-weight: 900;
 }
 
-.dfNav_link{
-    color:#0297c9;
+.dfNav_link {
+    color: #0297c9;
     padding: 6px 6px 6px 6px;
+}
+
+
+/*Mobile view filters*/
+
+.narrow_btnOpenFilters {
+    background-color: white;
+    color: black;
+    width: 100%;
+}
+
+.narrow_btnOpenFilters:hover {
+    color: black !important;
+}
+
+.narrow_btnOpenFilters .pt-icon-settings {
+    padding-right: 8px;
+}
+
+.narrow_btnCloseFilters {
+    width: 100%;
 }
