@@ -54,6 +54,15 @@ Template Name: data_explorer
         $unicef_settings = '{"indicatorProfileUrl": "' . $indicator_profile_url . '", "helpUrl": "' . $help_url . '" }';
 
         echo ('<script>unicef_settings = ' . $unicef_settings . '</script>');
+
+        $hierarchy=get_post_meta(get_the_ID(), 'de_hierarchy_cfg', true);
+        $hierarchy=get_post_meta(get_the_ID(), 'de_hierarchy_cfg', true);
+        if ($hierarchy!=null && trim($hierarchy)!=""){
+            echo('<script>HIERARCHY_override='.$hierarchy.'</script>');
+        }
+        else{
+            echo('<script>HIERARCHY_override={}</script>');
+        }
     }
 
     $qs_agency = sanitize_text_field(get_query_var('ag'));
@@ -86,6 +95,7 @@ Template Name: data_explorer
     $script_dataflow = strtr($script_dataflow, $dataflow_vars);
 
     echo ($script_dataflow);
+    //echo('<script> var HIERARCHY = {"url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/hierarchicalcodelist/UNICEF/REGIONS_HIERARCHY/latest/"  }</script>');
     ?>
 
     <!--Page title-->

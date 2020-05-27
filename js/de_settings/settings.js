@@ -12,7 +12,8 @@ var SETTINGS = {
     },
     chart: { url: "", source: "", options: { base: { height: 400 }, axis: { x: { font: { family: "'Segoe UI'" } }, y: { linear: { step: 5 }, font: { family: "'Segoe UI'" } } }, serie: { annotation: { font: { family: "'Segoe UI'" } }, tooltip: { font: { family: "'Segoe UI'" } } } }, size: { height: 400 } }, i18n: { localeId: "en", locales: { en: { id: "en", delimiters: { thousands: ",", decimal: "." } } } },
     //unicef: { "indicatorProfileUrl": "../../../indicator-profile" }
-    unicef:{}
+    unicef:{},
+    hierarchy:{}
 }
 
 var I18N = {
@@ -67,3 +68,4 @@ var I18N = {
 
 SETTINGS.sdmx.datasources = SETTINGS_override;
 SETTINGS.unicef = unicef_settings;
+SETTINGS.hierarchy=HIERARCHY_override;

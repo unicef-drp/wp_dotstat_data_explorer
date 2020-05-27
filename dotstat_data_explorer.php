@@ -62,15 +62,22 @@ function de_display_meta_box($de)
 	$de_page_title = get_post_meta($de->ID, 'de_page_title', true);
 	$api_url = get_post_meta($de->ID, 'api_url', true);
 	$backtype_radio_value = get_post_meta($de->ID, 'backtype_radio_value', true);
+	$de_hierarchy_cfg = get_post_meta($de->ID, 'de_hierarchy_cfg', true);
 ?>
 	<table>
 		<tr>
 			<td>Page title</td>
-			<td>​<input style="width: 500px" name="de_page_title" type="text" value="<?php echo $de_page_title; ?>"></input></td>			
+			<td>​<input style="width: 500px" name="de_page_title" type="text" value="<?php echo $de_page_title; ?>"></input></td>
+			<td>The page title</td>
 		</tr>
 		<tr>
 			<td>API URL</td>
 			<td>​<textarea name="de_api_url_name" rows="10" cols="80"><?php echo $api_url; ?></textarea></td>
+			<td>e.g: {fusion: { url: "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest",
+hasRangeHeader: !0,
+supportsReferencePartial: !1
+ }}
+</td>
 		</tr>
 		<tr>
 			<td>Backend</td>
@@ -85,6 +92,12 @@ function de_display_meta_box($de)
 					<?php esc_attr_e('FUSION'); ?>
 				</label>
 			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Hierarchy</td>
+			<td>​<textarea name="de_hierarchy_cfg" rows="10" cols="80"><?php echo $de_hierarchy_cfg; ?></textarea></td>
+			<td>e.g: {agencyId:"UNICEF", id:"REGIONS_HIERARCHY"}</td>
 		</tr>
 	</table>
 <?php
@@ -111,6 +124,11 @@ function de_add_fields($de_id, $de_fields)
 			update_post_meta($de_id, 'backtype_radio_value', sanitize_text_field(wp_unslash($_POST['de_backtype_radio_value']))); // Input var okay.
 		} else {
 			update_post_meta($de_id, 'backtype_radio_value', 'DOTSTAT');
+		}
+
+		// Store data in post meta table if present in post data
+		if (isset($_POST['de_hierarchy_cfg'])) {
+			update_post_meta($de_id, 'de_hierarchy_cfg', $_POST['de_hierarchy_cfg']);
 		}
 	}
 }

@@ -329,3 +329,10 @@
 .narrow_btnCloseFilters {
     width: 100%;
 }
+
+.hier_sel{
+    background-color: #137cbd;
+}
+.hier_unsel{
+    background-color: #ffffff;
+}
