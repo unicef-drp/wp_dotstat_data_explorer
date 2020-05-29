@@ -171,6 +171,10 @@
     flex-wrap: nowrap;
 }
 
+.cell_flag{
+    color:#47494e;
+}
+
 
 /*Limited data message box */
 
@@ -249,6 +253,9 @@
     .help_text {
         display: inline-block;
     }
+    .help_text_small{
+        display: none !important;
+    }
     #div_de_help {
         max-width: 120px;
     }
@@ -257,6 +264,9 @@
 @media only screen and (max-width: 701px) {
     .help_text {
         display: none !important;
+    }
+    .help_text_small{
+        display: inline-block;
     }
     #div_de_help {
         max-width: 80px;
@@ -293,6 +303,7 @@
     background-color: #f0f0f1;
     text-align: center;
     margin-bottom: 12px;
+    font-size: 14px;
 }
 
 .dfNav_dfnametop {
@@ -307,6 +318,7 @@
 .dfNav_link {
     color: #0297c9;
     padding: 6px 6px 6px 6px;
+    text-decoration: underline;
 }
 
 
@@ -335,4 +347,8 @@
 }
 .hier_unsel{
     background-color: #ffffff;
+}
+
+.hierarchy_tree{
+    font-size: 14px;;
 }

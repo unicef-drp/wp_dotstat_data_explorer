@@ -62,6 +62,7 @@ var I18N = {
         "vx.config.display.both": "both",
 
         "de.IndicatorLinkUnicef.goToIndicator": "View the indicator profile for any selected indicator:",
+        "de.dataflowNavigator.findMoreData":"Find in-depth data on",
     }
 }
 
