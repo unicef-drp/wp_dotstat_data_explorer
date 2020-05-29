@@ -55,13 +55,12 @@ Template Name: data_explorer
 
         echo ('<script>unicef_settings = ' . $unicef_settings . '</script>');
 
-        $hierarchy=get_post_meta(get_the_ID(), 'de_hierarchy_cfg', true);
-        $hierarchy=get_post_meta(get_the_ID(), 'de_hierarchy_cfg', true);
-        if ($hierarchy!=null && trim($hierarchy)!=""){
-            echo('<script>HIERARCHY_override='.$hierarchy.'</script>');
-        }
-        else{
-            echo('<script>HIERARCHY_override={}</script>');
+        $hierarchy = get_post_meta(get_the_ID(), 'de_hierarchy_cfg', true);
+        $hierarchy = get_post_meta(get_the_ID(), 'de_hierarchy_cfg', true);
+        if ($hierarchy != null && trim($hierarchy) != "") {
+            echo ('<script>HIERARCHY_override=' . $hierarchy . '</script>');
+        } else {
+            echo ('<script>HIERARCHY_override={}</script>');
         }
     }
 
@@ -111,7 +110,7 @@ Template Name: data_explorer
                             <div class="block--heading__content box">
                                 <div class="block--heading__card card">
                                     <div class="block--heading__tags block--heading__card--middle">
-                                        <h1 class="no-margin"><?php echo(get_post_meta(get_the_ID(), 'de_page_title', true)); ?></h1>
+                                        <h1 class="no-margin"><?php echo (get_post_meta(get_the_ID(), 'de_page_title', true)); ?></h1>
                                     </div>
                                 </div>
                             </div>
@@ -128,7 +127,6 @@ Template Name: data_explorer
 
 
     <?php if ($help_url != null && $help_url != "") { ?>
-
         <div id="div_de_help" class="pull-right">
             <div class="closebtn" onclick="document.getElementById('div_de_help').style.display='none';"><i class="material-icons md-18">clear</i></div>
             <a href="<?php echo ($help_url) ?>"><i class="material-icons">help</i></a><a href="<?php echo ($help_url) ?>"><span class="help_text">Need help using this tool?</span>

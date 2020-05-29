@@ -233,7 +233,7 @@
 
 #div_de_help {
     background-color: #1cabe2;
-    border: 3px solid #1cabe2;
+    border: 3px solid #ffffff;
     border-radius: 5px;
     text-align: center;
     width: 100%;
@@ -242,7 +242,7 @@
     color: #fff;
     position: fixed;
     right: 80px;
-    bottom: 140px;
+    bottom: 40px;
 }
 
 @media only screen and (min-width: 700px) {
