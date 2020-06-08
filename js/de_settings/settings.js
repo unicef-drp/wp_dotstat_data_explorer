@@ -55,7 +55,7 @@ var I18N = {
         "de.table.layout.x": "Rows",
         "de.table.layout.z": "Section",
         "de.table.layout.getter.dimension": "Format",
-        "de.table.layout.help": "Drag dimensions between Columns, Row sections and Rows",
+        "de.table.layout.help": "Drag dimensions between columns, rows and row sections",
         "de.table.layout.title": "Organize your table",
         "vx.config.display.label": "name",
         "vx.config.display.code": "code",
