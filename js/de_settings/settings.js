@@ -60,6 +60,7 @@ var I18N = {
         "vx.config.display.label": "name",
         "vx.config.display.code": "code",
         "vx.config.display.both": "both",
+        "footnotes": "Footnotes",
 
         "de.IndicatorLinkUnicef.goToIndicator": "View the indicator profile for any selected indicator:",
         "de.dataflowNavigator.findMoreData":"Find in-depth data on",

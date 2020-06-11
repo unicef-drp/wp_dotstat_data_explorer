@@ -173,7 +173,7 @@ function de_add_data_explorer()
 	if (is_single() && get_post_type() == 'data_explorer') {
 
 		$js_url = plugins_url('js/', __FILE__);
-		wp_enqueue_script('de_settings', $js_url . 'de_settings/settings.js', NULL, 1.04, true);
+		wp_enqueue_script('de_settings', $js_url . 'de_settings/settings.js', NULL, 1.06, true);
 
 		$static_path = plugin_dir_path(__FILE__) . 'de/static/';
 
