@@ -12,7 +12,8 @@ var SETTINGS = {
     },
     chart: { url: "", source: "", options: { base: { height: 400 }, axis: { x: { font: { family: "'Segoe UI'" } }, y: { linear: { step: 5 }, font: { family: "'Segoe UI'" } } }, serie: { annotation: { font: { family: "'Segoe UI'" } }, tooltip: { font: { family: "'Segoe UI'" } } } }, size: { height: 400 } }, i18n: { localeId: "en", locales: { en: { id: "en", delimiters: { thousands: ",", decimal: "." } } } },
     //unicef: { "indicatorProfileUrl": "../../../indicator-profile" }
-    unicef:{}
+    unicef:{},
+    hierarchy:{}
 }
 
 var I18N = {
@@ -27,6 +28,7 @@ var I18N = {
         "de.side.filters.action": "Filters",
         "de.filter.period.title": "Select time period",
         "de.filter.period.tag": "{min} - {max}",
+        "de.filter.period.lastnobs":"Show latest data only",
         "de.visualisation.toolbar.show": "Show:",
         "de.visualisation.toolbar.table": "Table",
         "de.visualisation.toolbar.chart": "Chart",
@@ -41,6 +43,8 @@ var I18N = {
         "de.visualisation.toolbar.action.help":"Help",
         "vx.no.data": "No data", "vx.filters.current.title": "Selected filters",
         "vx.filters.current.clear": "Clear all filters",
+        "vx.filters.filterdata":  "Filter data",
+        "vx.filters.close":  "Close",
         "de.table.layout.apply": "Apply",
         "de.table.layout.cancel": "Cancel",
         "de.table.layout.value.one": "In the subtitle",
@@ -51,16 +55,19 @@ var I18N = {
         "de.table.layout.x": "Rows",
         "de.table.layout.z": "Section",
         "de.table.layout.getter.dimension": "Format",
-        "de.table.layout.help": "Drag dimensions between Columns, Row sections and Rows",
+        "de.table.layout.help": "Drag dimensions between columns, rows and row sections",
         "de.table.layout.title": "Organize your table",
         "vx.config.display.label": "name",
         "vx.config.display.code": "code",
         "vx.config.display.both": "both",
+        "footnotes": "Footnotes",
 
         "de.IndicatorLinkUnicef.goToIndicator": "View the indicator profile for any selected indicator:",
+        "de.dataflowNavigator.findMoreData":"Find in-depth data on",
     }
 }
 
 
 SETTINGS.sdmx.datasources = SETTINGS_override;
 SETTINGS.unicef = unicef_settings;
+SETTINGS.hierarchy=HIERARCHY_override;

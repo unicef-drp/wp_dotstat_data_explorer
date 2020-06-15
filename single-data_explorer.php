@@ -48,21 +48,20 @@ Template Name: data_explorer
         $api_url =  get_post_meta(get_the_ID(), 'api_url', true);
         echo ('<script>SETTINGS_override = ' . $api_url . '</script>');
 
-        //$unicef_settings =  get_post_meta(get_the_ID(), 'unicef_settings', true);
-
-        //$indicator_profile_url = get_post_meta(get_the_ID(), 'indicator_profile_url', true);
-        //$help_url = get_post_meta(get_the_ID(), 'help_url', true);
-
-        /*$indicator_profile_url = "../../../indicator-profile";
-        $help_url = "http://www.ansa.it";*/
-
         $indicator_profile_url = esc_attr(get_option('de_indicator_profile_url', ''));
         $help_url = esc_attr(get_option('de_help_url', ''));
 
         $unicef_settings = '{"indicatorProfileUrl": "' . $indicator_profile_url . '", "helpUrl": "' . $help_url . '" }';
 
-        //$unicef_settings =  '{"indicatorProfileUrl": "../../../indicator-profile", "helpUrl": "http://www.ansa.it" }';
         echo ('<script>unicef_settings = ' . $unicef_settings . '</script>');
+
+        $hierarchy = get_post_meta(get_the_ID(), 'de_hierarchy_cfg', true);
+        $hierarchy = get_post_meta(get_the_ID(), 'de_hierarchy_cfg', true);
+        if ($hierarchy != null && trim($hierarchy) != "") {
+            echo ('<script>HIERARCHY_override=' . $hierarchy . '</script>');
+        } else {
+            echo ('<script>HIERARCHY_override={}</script>');
+        }
     }
 
     $qs_agency = sanitize_text_field(get_query_var('ag'));
@@ -95,10 +94,45 @@ Template Name: data_explorer
     $script_dataflow = strtr($script_dataflow, $dataflow_vars);
 
     echo ($script_dataflow);
+    //echo('<script> var HIERARCHY = {"url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/hierarchicalcodelist/UNICEF/REGIONS_HIERARCHY/latest/"  }</script>');
     ?>
+
+    <!--Page title-->
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="block block--heading resource-heading resource-heading--archive">
+                <div class="block__background block__background--small" style="
+            background-color:#f1f1f1;">
+                </div>
+                <div class="block__content">
+                    <div class="row center-xs">
+                        <div class="col-xs-12 col-lg-8">
+                            <div class="block--heading__content box">
+                                <div class="block--heading__card card">
+                                    <div class="block--heading__tags block--heading__card--middle">
+                                        <h1 class="no-margin"><?php echo (get_post_meta(get_the_ID(), 'de_page_title', true)); ?></h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End page title-->
 
     <div id="root">
     </div>
+
+
+    <?php if ($help_url != null && $help_url != "") { ?>
+        <div id="div_de_help" class="pull-right">
+            <div class="closebtn" onclick="document.getElementById('div_de_help').style.display='none';"><i class="material-icons md-18">clear</i></div>
+            <a href="<?php echo ($help_url) ?>"><i class="material-icons">help</i></a><a href="<?php echo ($help_url) ?>"><span class="help_text">Need help using this tool?</span><span class="help_text_small">Help</span>
+            </a>
+        </div>
+    <?php } ?>
 </main>
 
 <?php

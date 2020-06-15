@@ -59,13 +59,25 @@ function de_add_metabox()
 
 function de_display_meta_box($de)
 {
+	$de_page_title = get_post_meta($de->ID, 'de_page_title', true);
 	$api_url = get_post_meta($de->ID, 'api_url', true);
 	$backtype_radio_value = get_post_meta($de->ID, 'backtype_radio_value', true);
-	?>
+	$de_hierarchy_cfg = get_post_meta($de->ID, 'de_hierarchy_cfg', true);
+?>
 	<table>
+		<tr>
+			<td>Page title</td>
+			<td>​<input style="width: 500px" name="de_page_title" type="text" value="<?php echo $de_page_title; ?>"></input></td>
+			<td>The page title</td>
+		</tr>
 		<tr>
 			<td>API URL</td>
 			<td>​<textarea name="de_api_url_name" rows="10" cols="80"><?php echo $api_url; ?></textarea></td>
+			<td>e.g: {fusion: { url: "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest",
+hasRangeHeader: !0,
+supportsReferencePartial: !1
+ }}
+</td>
 		</tr>
 		<tr>
 			<td>Backend</td>
@@ -80,6 +92,12 @@ function de_display_meta_box($de)
 					<?php esc_attr_e('FUSION'); ?>
 				</label>
 			</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Hierarchy</td>
+			<td>​<textarea name="de_hierarchy_cfg" rows="10" cols="80"><?php echo $de_hierarchy_cfg; ?></textarea></td>
+			<td>e.g: {agencyId:"UNICEF", id:"REGIONS_HIERARCHY"}</td>
 		</tr>
 	</table>
 <?php
@@ -90,8 +108,13 @@ add_action('save_post', 'de_add_fields', 10, 2);
 
 function de_add_fields($de_id, $de_fields)
 {
-	// Check post type for movie reviews
+	// Check post type for data explorers
 	if ($de_fields->post_type == 'data_explorer') {
+		// Store data in post meta table if present in post data
+		if (isset($_POST['de_page_title']) && $_POST['de_page_title'] != '') {
+			update_post_meta($de_id, 'de_page_title', $_POST['de_page_title']);
+		}
+
 		// Store data in post meta table if present in post data
 		if (isset($_POST['de_api_url_name']) && $_POST['de_api_url_name'] != '') {
 			update_post_meta($de_id, 'api_url', $_POST['de_api_url_name']);
@@ -101,6 +124,11 @@ function de_add_fields($de_id, $de_fields)
 			update_post_meta($de_id, 'backtype_radio_value', sanitize_text_field(wp_unslash($_POST['de_backtype_radio_value']))); // Input var okay.
 		} else {
 			update_post_meta($de_id, 'backtype_radio_value', 'DOTSTAT');
+		}
+
+		// Store data in post meta table if present in post data
+		if (isset($_POST['de_hierarchy_cfg'])) {
+			update_post_meta($de_id, 'de_hierarchy_cfg', $_POST['de_hierarchy_cfg']);
 		}
 	}
 }
@@ -145,7 +173,7 @@ function de_add_data_explorer()
 	if (is_single() && get_post_type() == 'data_explorer') {
 
 		$js_url = plugins_url('js/', __FILE__);
-		wp_enqueue_script('de_settings', $js_url . 'de_settings/settings.js', NULL, 1.03, true);
+		wp_enqueue_script('de_settings', $js_url . 'de_settings/settings.js', NULL, 1.06, true);
 
 		$static_path = plugin_dir_path(__FILE__) . 'de/static/';
 
@@ -158,7 +186,7 @@ function de_add_data_explorer()
 		for ($i = 0; $i < count($css_list); $i++) {
 			//remove the main as it seems to contain body elements already present in the hosting Wordpress page
 			//if (strpos(basename($css_list[$i]), "main") === false) {
-				wp_enqueue_style('de_style' . $i, $css_url . basename($css_list[$i]));
+			wp_enqueue_style('de_style' . $i, $css_url . basename($css_list[$i]));
 			//}
 		}
 
@@ -196,11 +224,11 @@ function de_enqueue_style()
 {
 	if (is_single() && get_post_type() == 'data_explorer') {
 
-		$js_version = 1.15;
-		
+		$js_version = 1.20;
+
 		$css_url = plugins_url('css/', __FILE__);
 		wp_enqueue_style('data_expl_css', $css_url . 'data_explorer.css', array(), $js_version);
-		
+
 		$js_url = plugins_url('js/', __FILE__);
 		wp_enqueue_script('de_url_changer', $js_url . 'url_changer.js', array(), $js_version, true);
 		// wp_enqueue_script('related_search', $js_url . 'related_search.js', array('jquery', 'algoliasearchLite', 'algolia_instantsearch'), NULL, true);
@@ -267,11 +295,11 @@ function de_settings_init()
 function de_indicator_profile_url_callb()
 {
 	$de_indicator_profile_url = esc_attr(get_option('de_indicator_profile_url', ''));
-	echo ("<div><input id=\"de_indicator_profile_url\" type=\"text\" name=\"de_indicator_profile_url\" size=\"100\" value=\"".$de_indicator_profile_url."\"></div>");
+	echo ("<div><input id=\"de_indicator_profile_url\" type=\"text\" name=\"de_indicator_profile_url\" size=\"100\" value=\"" . $de_indicator_profile_url . "\"></div>");
 }
 function de_help_url_callb()
 {
 	$de_help_url = esc_attr(get_option('de_help_url', ''));
-	echo ("<div><input id=\"de_help_url\" type=\"text\" name=\"de_help_url\" size=\"80\" value=\"".$de_help_url."\"></div>");
+	echo ("<div><input id=\"de_help_url\" type=\"text\" name=\"de_help_url\" size=\"80\" value=\"" . $de_help_url . "\"></div>");
 }
 ?>

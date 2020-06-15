@@ -53,6 +53,7 @@
     color: #1cabe2;
 }
 
+
 /*#root .pt-popover-target {
     padding: 1px 1px;
     height: 100%;
@@ -115,6 +116,7 @@
 .TableConfig_wrapper {
     padding-top: 20px;
     border-top: 2px solid black;
+    margin-top: 20px;
 }
 
 .header_download {
@@ -122,22 +124,63 @@
     justify-content: space-between;
 }
 
-.de_vis_toolbar_wrapper {
+.de_toolbar_items_wrapper {
     border-top: none !important;
-    
 }
 
-.de_toolbar_items_wrapper{
+.de_vis_toolbar_wrapper {
+    border-top: none !important;
+}
+
+.header_download .de_toolbar_items_wrapper {
+    border-top: none !important;
+    background-color: #1cabe2;
+    border: 3px solid #1cabe2;
+    border-radius: 5px;
+    padding: 3px 8px;
+}
+
+.header_download .de_toolbar_items_wrapper:hover {
+    background-color: #199acb;
+    border: 3px solid #199acb;
+}
+
+.header_download .de_toolbar_items_wrapper span {
+    margin-left: 6px;
+}
+
+.header_download .de_toolbar_items_wrapper button::before {
+    color: #fff;
+}
+
+.header_download .de_toolbar_items_wrapper .pt-button {
+    color: #fff;
+    text-decoration: none;
+    display: flex;
+}
+
+.header_download .de_toolbar_items_wrapper .pt-popover-open span {
+    color: #fff;
+}
+
+.div_lastnobs {
+    margin-bottom: 20px;
+}
+
+.de_toolbar_items_wrapper {
     flex-wrap: nowrap;
 }
 
+.cell_flag{
+    color:#47494e;
+}
 
 
 /*Limited data message box */
 
 .div_dataLimited {
     background-color: #fffbe5;
-    color:#5c3c00;
+    color: #5c3c00;
     padding: 3px 15px;
     margin: 15px 0 5px 0;
     border-radius: 6px;
@@ -186,4 +229,126 @@
     padding: 3px 15px;
     margin: 15px 0 5px 0;
     border-radius: 6px;
+}
+
+
+/*Help box*/
+
+
+#div_de_help {
+    background-color: #1cabe2;
+    border: 3px solid #ffffff;
+    border-radius: 5px;
+    text-align: center;
+    width: 100%;
+    padding: 8px;
+    margin: 10px;
+    color: #fff;
+    position: fixed;
+    right: 80px;
+    bottom: 40px;
+}
+
+@media only screen and (min-width: 700px) {
+    .help_text {
+        display: inline-block;
+    }
+    .help_text_small{
+        display: none !important;
+    }
+    #div_de_help {
+        max-width: 120px;
+    }
+}
+
+@media only screen and (max-width: 701px) {
+    .help_text {
+        display: none !important;
+    }
+    .help_text_small{
+        display: inline-block;
+    }
+    #div_de_help {
+        max-width: 80px;
+    }
+}
+
+#div_de_help a {
+    text-decoration: none;
+}
+
+#div_de_help span,
+#div_de_help i {
+    display: block;
+    margin-bottom: 3px;
+    color: #fff;
+}
+
+#div_de_help .closebtn {
+    position: absolute;
+    top: 0px;
+    right: 4px;
+    cursor: pointer;
+    margin:2px;
+}
+
+#div_de_help .material-icons.md-18 {
+    font-size: 18px;
+}
+
+
+/*dataflow navigator*/
+
+.dfNav_item {
+    background-color: #f0f0f1;
+    text-align: center;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.dfNav_dfnametop {
+    padding: 6px 6px 6px 6px;
+}
+
+.df_nav_dfname {
+    padding: 3px 6px 3px 6px;
+    font-weight: 900;
+}
+
+.dfNav_link {
+    color: #0297c9;
+    padding: 6px 6px 6px 6px;
+    text-decoration: underline;
+}
+
+
+/*Mobile view filters*/
+
+.narrow_btnOpenFilters {
+    background-color: white;
+    color: black;
+    width: 100%;
+}
+
+.narrow_btnOpenFilters:hover {
+    color: black !important;
+}
+
+.narrow_btnOpenFilters .pt-icon-settings {
+    padding-right: 8px;
+}
+
+.narrow_btnCloseFilters {
+    width: 100%;
+}
+
+.hier_sel{
+    background-color: #137cbd;
+}
+.hier_unsel{
+    background-color: #ffffff;
+}
+
+.hierarchy_tree{
+    font-size: 14px;;
 }
