@@ -56,7 +56,6 @@ Template Name: data_explorer
         echo ('<script>unicef_settings = ' . $unicef_settings . '</script>');
 
         $hierarchy = get_post_meta(get_the_ID(), 'de_hierarchy_cfg', true);
-        $hierarchy = get_post_meta(get_the_ID(), 'de_hierarchy_cfg', true);
         if ($hierarchy != null && trim($hierarchy) != "") {
             echo ('<script>HIERARCHY_override=' . $hierarchy . '</script>');
         } else {
