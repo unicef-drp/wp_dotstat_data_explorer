@@ -61,6 +61,8 @@ Template Name: data_explorer
         } else {
             echo ('<script>HIERARCHY_override={}</script>');
         }
+
+        $de_forced_dims = get_post_meta(get_the_ID(), 'de_forced_dims', true);
     }
 
     $qs_agency = sanitize_text_field(get_query_var('ag'));
@@ -78,7 +80,14 @@ Template Name: data_explorer
 
     $backendId =  get_post_meta(get_the_ID(), 'backtype_radio_value', true);
 
-    $script_dataflow = '<script>var DATAFLOW = {datasourceId:"fusion", agencyId:"$agency_id", dataflowId:"$dataflow", version:"$version", dataquery:"$dataquery", period: [$startPeriod, $endPeriod], backendId:"$backendId"}</script>';
+    //$script_dataflow = '<script>var DATAFLOW = {datasourceId:"fusion", agencyId:"$agency_id", dataflowId:"$dataflow", version:"$version", dataquery:"$dataquery", period: [$startPeriod, $endPeriod], backendId:"$backendId"}</script>';
+    $script_dataflow = '<script>var DATAFLOW = {datasourceId:"fusion", agencyId:"$agency_id", dataflowId:"$dataflow", version:"$version", dataquery:"$dataquery", period: [$startPeriod, $endPeriod], backendId:"$backendId"';
+
+    if ($de_forced_dims!=""){
+        $script_dataflow = $script_dataflow . ',forcedDims:$forcedDims}</script>';}
+    else{
+        $script_dataflow = $script_dataflow . '}</script>';
+    }
 
     $dataflow_vars = array(
         '$agency_id' => $qs_agency,
@@ -87,13 +96,14 @@ Template Name: data_explorer
         '$dataquery' => str_replace(" ", "+", $dataquery),
         '$startPeriod' => $startPeriod,
         '$endPeriod' => $endPeriod,
-        '$backendId' => $backendId
+        '$backendId' => $backendId,
+        '$forcedDims' => $de_forced_dims,
     );
 
     $script_dataflow = strtr($script_dataflow, $dataflow_vars);
 
     echo ($script_dataflow);
-    //echo('<script> var HIERARCHY = {"url": "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest/hierarchicalcodelist/UNICEF/REGIONS_HIERARCHY/latest/"  }</script>');
+    
     ?>
 
     <!--Page title-->

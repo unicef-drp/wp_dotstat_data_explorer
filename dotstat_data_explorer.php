@@ -63,6 +63,7 @@ function de_display_meta_box($de)
 	$api_url = get_post_meta($de->ID, 'api_url', true);
 	$backtype_radio_value = get_post_meta($de->ID, 'backtype_radio_value', true);
 	$de_hierarchy_cfg = get_post_meta($de->ID, 'de_hierarchy_cfg', true);
+	$de_forced_dims = get_post_meta($de->ID, 'de_forced_dims', true);
 ?>
 	<table>
 		<tr>
@@ -99,6 +100,11 @@ supportsReferencePartial: !1
 			<td>​<textarea name="de_hierarchy_cfg" rows="10" cols="80"><?php echo $de_hierarchy_cfg; ?></textarea></td>
 			<td>e.g: {agencyId:"UNICEF", id:"REGIONS_HIERARCHY"}</td>
 		</tr>
+		<tr>
+			<td>Forced dims</td>
+			<td>​<textarea name="de_forced_dims" rows="10" cols="80"><?php echo $de_forced_dims; ?></textarea></td>
+			<td>e.g: {REF_AREA:"AGF"}</td>
+		</tr>
 	</table>
 <?php
 }
@@ -129,6 +135,12 @@ function de_add_fields($de_id, $de_fields)
 		// Store data in post meta table if present in post data
 		if (isset($_POST['de_hierarchy_cfg'])) {
 			update_post_meta($de_id, 'de_hierarchy_cfg', $_POST['de_hierarchy_cfg']);
+		}		
+		if (isset($_POST['de_forced_dims'])) {
+			update_post_meta($de_id, 'de_forced_dims', $_POST['de_forced_dims']);
+		}
+		else{
+			update_post_meta($de_id, 'de_forced_dims', "");
 		}
 	}
 }
