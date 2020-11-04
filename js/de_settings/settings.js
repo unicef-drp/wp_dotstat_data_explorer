@@ -72,3 +72,4 @@ var I18N = {
 SETTINGS.sdmx.datasources = SETTINGS_override;
 SETTINGS.unicef = unicef_settings;
 SETTINGS.hierarchy=HIERARCHY_override;
+//SETTINGS.map=map_settings;
