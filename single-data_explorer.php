@@ -148,15 +148,15 @@ Template Name: data_explorer
 
 <?php $res_v = "1.01" ?>
 
-<script src="http://data.unicef.org/wp-content/plugins/dataexplorer/js/de_settings/settings.js?v=<?php echo ($res_v); ?>"></script>
-<script src="http://data.unicef.org/wp-content/plugins/dataexplorer/js/url_changer.js?v=<?php echo ($res_v); ?>"></script>
-<script src="http://data.unicef.org/wp-content/plugins/dataexplorer/de/static/js/bundle.js?v=<?php echo ($res_v); ?>"></script>
-<script src="http://data.unicef.org/wp-content/plugins/dataexplorer/de/static/js/2.chunk.js?v=<?php echo ($res_v); ?>"></script>
-<script src="http://data.unicef.org/wp-content/plugins/dataexplorer/de/static/js/main.chunk.js?v=<?php echo ($res_v); ?>"></script>
+<script src="https://data.unicef.org/wp-content/plugins/dataexplorer/js/de_settings/settings.js?v=<?php echo ($res_v); ?>"></script>
+<script src="https://data.unicef.org/wp-content/plugins/dataexplorer/js/url_changer.js?v=<?php echo ($res_v); ?>"></script>
+<script src="https://data.unicef.org/wp-content/plugins/dataexplorer/de/static/js/bundle.js?v=<?php echo ($res_v); ?>"></script>
+<script src="https://data.unicef.org/wp-content/plugins/dataexplorer/de/static/js/2.chunk.js?v=<?php echo ($res_v); ?>"></script>
+<script src="https://data.unicef.org/wp-content/plugins/dataexplorer/de/static/js/main.chunk.js?v=<?php echo ($res_v); ?>"></script>
 
-<link rel="stylesheet" href="http://data.unicef.org/wp-content/plugins/dataexplorer/css/data_explorer.css?v=<?php echo ($res_v); ?>" />
-<link rel="stylesheet" href="http://data.unicef.org/wp-content/plugins/dataexplorer/de/static/css/main.chunk.css?v=<?php echo ($res_v); ?>" />
-<link rel="stylesheet" href="http://data.unicef.org/wp-content/plugins/dataexplorer/de/static/css/2.chunk.css?v=<?php echo ($res_v); ?>" />
+<link rel="stylesheet" href="https://data.unicef.org/wp-content/plugins/dataexplorer/css/data_explorer.css?v=<?php echo ($res_v); ?>" />
+<link rel="stylesheet" href="https://data.unicef.org/wp-content/plugins/dataexplorer/de/static/css/main.chunk.css?v=<?php echo ($res_v); ?>" />
+<link rel="stylesheet" href="https://data.unicef.org/wp-content/plugins/dataexplorer/de/static/css/2.chunk.css?v=<?php echo ($res_v); ?>" />
 
 <?php
 wp_reset_query();

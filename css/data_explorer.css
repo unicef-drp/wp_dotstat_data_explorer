@@ -29,6 +29,8 @@
     border-radius: unset;
     box-shadow: unset;
     border: unset;
+    line-height: unset;
+    min-height: unset;
 }
 
 .data-explorer div[role="button"] {
@@ -46,7 +48,9 @@
 #root [type=reset]:focus,
 #root [type=submit]:focus,
 #root button:focus {
-    color: unset;
+    color: unset !important;
+    outline: none !important;
+    outline-offset: none !important;
 }
 
 #root button:hover {
@@ -70,6 +74,7 @@
     font-style: normal;
     opacity: 0.8 !important;
     padding: 2px;
+    min-width: unset;
 }
 
 
@@ -147,6 +152,8 @@
 
 .header_download .de_toolbar_items_wrapper span {
     margin-left: 6px;
+    margin-top: 6px;
+    margin-bottom: 6px;
 }
 
 .header_download .de_toolbar_items_wrapper button::before {
