@@ -54,7 +54,11 @@ Template Name: data_explorer
         $unicef_settings = '{"indicatorProfileUrl": "' . $indicator_profile_url . '", "helpUrl": "' . $help_url . '" }';
         echo ('<script>unicef_settings = ' . $unicef_settings . '</script>');
 
-        $map_settings = '{"ref_area_dim_id":"REF_AREA",}';
+        /*$map_settings = '{"ref_area_dim_id":"REF_AREA",
+            "geojson_url": "https://data.unicef.org/wp-content/plugins/dataexplorer_maps/maps/CNTR_RG_20M_2020_4326.json",
+        }';*/
+        $map_settings = '{"ref_area_dim_id":"REF_AREA", "geojson_url": "http://localhost/wp-content/plugins/wp_dotstat_data_explorer/CNTR_RG_20M_2020_4326.json"}';
+        //http://localhost/wp-content/plugins/wp_dotstat_data_explorer/js/de_settings/settings.js?v
         echo ('<script>map_settings = ' . $map_settings . '</script>');
 
         $hierarchy = get_post_meta(get_the_ID(), 'de_hierarchy_cfg', true);
@@ -146,18 +150,25 @@ Template Name: data_explorer
     <?php } ?>
 </main>
 
-<?php $res_v = "1.01" ?>
+<?php $res_v = "1.02" ?>
 
-<script src="https://data.unicef.org/wp-content/plugins/dataexplorer/js/de_settings/settings.js?v=<?php echo ($res_v); ?>"></script>
-<script src="https://data.unicef.org/wp-content/plugins/dataexplorer/js/url_changer.js?v=<?php echo ($res_v); ?>"></script>
-<script src="https://data.unicef.org/wp-content/plugins/dataexplorer/de/static/js/bundle.js?v=<?php echo ($res_v); ?>"></script>
-<script src="https://data.unicef.org/wp-content/plugins/dataexplorer/de/static/js/2.chunk.js?v=<?php echo ($res_v); ?>"></script>
-<script src="https://data.unicef.org/wp-content/plugins/dataexplorer/de/static/js/main.chunk.js?v=<?php echo ($res_v); ?>"></script>
 
-<link rel="stylesheet" href="https://data.unicef.org/wp-content/plugins/dataexplorer/css/data_explorer.css?v=<?php echo ($res_v); ?>" />
-<link rel="stylesheet" href="https://data.unicef.org/wp-content/plugins/dataexplorer/de/static/css/main.chunk.css?v=<?php echo ($res_v); ?>" />
-<link rel="stylesheet" href="https://data.unicef.org/wp-content/plugins/dataexplorer/de/static/css/2.chunk.css?v=<?php echo ($res_v); ?>" />
+<link rel="stylesheet" href="http://localhost/wp-content/plugins/wp_dotstat_data_explorer/css/data_explorer.css?v=<?php echo ($res_v); ?>" />
+<link rel="stylesheet" href="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/de/static/css/main.chunk.css?v=<?php echo ($res_v); ?>" />
+<link rel="stylesheet" href="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/de/static/css/2.chunk.css?v=<?php echo ($res_v); ?>" />
+
+<script src="http://localhost/wp-content/plugins/wp_dotstat_data_explorer/js/de_settings/settings.js?v=<?php echo ($res_v); ?>"></script>
+<script src="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/js/url_changer.js?v=<?php echo ($res_v); ?>"></script>
+<script src="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/de/static/js/bundle.js?v=<?php echo ($res_v); ?>"></script>
+<script src="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/de/static/js/2.chunk.js?v=<?php echo ($res_v); ?>"></script>
+<script src="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/de/static/js/main.chunk.js?v=<?php echo ($res_v); ?>"></script>
+
 
 <?php
 wp_reset_query();
 get_footer();
+
+
+/*<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+crossorigin=""/>*/

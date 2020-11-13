@@ -21,9 +21,10 @@
 
 /*Unsets properties forced at body level*/
 
-#root div[role="button"]:focus{
-    outline:none !important;
+#root div[role="button"]:focus {
+    outline: none !important;
 }
+
 #root button[type="button"],
 .data-explorer button[type="reset"],
 .data-explorer button[type="submit"] {
@@ -183,8 +184,8 @@
     flex-wrap: nowrap;
 }
 
-.cell_flag{
-    color:#47494e;
+.cell_flag {
+    color: #47494e;
 }
 
 
@@ -246,7 +247,6 @@
 
 /*Help box*/
 
-
 #div_de_help {
     background-color: #1cabe2;
     border: 3px solid #ffffff;
@@ -265,7 +265,7 @@
     .help_text {
         display: inline-block;
     }
-    .help_text_small{
+    .help_text_small {
         display: none !important;
     }
     #div_de_help {
@@ -277,7 +277,7 @@
     .help_text {
         display: none !important;
     }
-    .help_text_small{
+    .help_text_small {
         display: inline-block;
     }
     #div_de_help {
@@ -301,7 +301,7 @@
     top: 0px;
     right: 4px;
     cursor: pointer;
-    margin:2px;
+    margin: 2px;
 }
 
 #div_de_help .material-icons.md-18 {
@@ -354,13 +354,51 @@
     width: 100%;
 }
 
-.hier_sel{
+.hier_sel {
     background-color: #137cbd;
 }
-.hier_unsel{
+
+.hier_unsel {
     background-color: #ffffff;
 }
 
-.hierarchy_tree{
-    font-size: 14px;;
+.hierarchy_tree {
+    font-size: 14px;
+    ;
 }
+
+
+/*Leaflet*/
+
+.countryLabel_custom {
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 0 !important;
+    padding: 1px !important;
+    border-radius: 0px !important;
+    box-shadow: 0 0px 0px !important;
+}
+
+#de_map {
+    height: 500px;
+    min-height: 500px;
+    max-width: 800px;
+}
+
+
+
+
+/* Without this fix the map does not appear*/
+#de_map .leaflet-image-layer, 
+#de_map .leaflet-layer, 
+#de_map .leaflet-marker-icon, 
+#de_map .leaflet-marker-shadow, 
+#de_map .leaflet-pane, 
+#de_map .leaflet-pane>canvas, 
+#de_map .leaflet-pane>svg,
+#de_map .leaflet-tile, 
+#de_map .leaflet-tile-container, 
+#de_map .leaflet-zoom-box {
+    position: relative;
+ }
+
+ /*Leaflet end*/
