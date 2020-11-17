@@ -143,22 +143,6 @@
     border-top: none !important;
 }
 
-.header_download .de_toolbar_items_wrapper {
-    /*border-top: none !important;
-    background-color: #1cabe2;
-    border: 3px solid #1cabe2;
-    border-radius: 5px;
-    padding: 3px 8px;*/
-}
-/*
-.header_download .de_toolbar_items_wrapper > span:first-child
-{
-    border-top: none !important;
-    background-color: #1cabe2;
-    border: 3px solid #1cabe2;
-    border-radius: 5px;
-    padding: 6px 12px;
-}*/
 .header_download .de_toolbar_items_wrapper button{    
     border-top: none !important;
     background-color: #1cabe2 !important;
@@ -166,18 +150,6 @@
     border-radius: 5px !important;
     margin: 1px !important;
     padding: 6px 12px;}
-
-
-/*.header_download .de_toolbar_items_wrapper:hover {
-    background-color: #199acb;
-    border: 3px solid #199acb;
-}*/
-/*
-.header_download .de_toolbar_items_wrapper span {
-    margin-left: 6px;
-    margin-top: 6px;
-    margin-bottom: 6px;
-}*/
 
 .header_download .de_toolbar_items_wrapper button::before {
     color: #fff;
