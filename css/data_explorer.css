@@ -144,26 +144,44 @@
 }
 
 .header_download .de_toolbar_items_wrapper {
+    /*border-top: none !important;
+    background-color: #1cabe2;
+    border: 3px solid #1cabe2;
+    border-radius: 5px;
+    padding: 3px 8px;*/
+}
+/*
+.header_download .de_toolbar_items_wrapper > span:first-child
+{
     border-top: none !important;
     background-color: #1cabe2;
     border: 3px solid #1cabe2;
     border-radius: 5px;
-    padding: 3px 8px;
-}
+    padding: 6px 12px;
+}*/
+.header_download .de_toolbar_items_wrapper button{    
+    border-top: none !important;
+    background-color: #1cabe2 !important;
+    border: 3px solid #1cabe2 !important;
+    border-radius: 5px !important;
+    margin: 1px !important;
+    padding: 6px 12px;}
 
-.header_download .de_toolbar_items_wrapper:hover {
+
+/*.header_download .de_toolbar_items_wrapper:hover {
     background-color: #199acb;
     border: 3px solid #199acb;
-}
-
+}*/
+/*
 .header_download .de_toolbar_items_wrapper span {
     margin-left: 6px;
     margin-top: 6px;
     margin-bottom: 6px;
-}
+}*/
 
 .header_download .de_toolbar_items_wrapper button::before {
     color: #fff;
+    margin-right: 4px !important;
 }
 
 .header_download .de_toolbar_items_wrapper .pt-button {
@@ -369,6 +387,10 @@
 
 
 /*Leaflet*/
+.map_info {
+    padding: 4px;
+    background-color: #ffffff;
+}
 
 .countryLabel_custom {
     background: rgba(255, 255, 255, 0.2) !important;
@@ -383,9 +405,6 @@
     min-height: 500px;
     max-width: 800px;
 }
-
-
-
 
 /* Without this fix the map does not appear*/
 #de_map .leaflet-image-layer, 
