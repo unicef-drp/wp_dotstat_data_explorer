@@ -42,6 +42,12 @@ Template Name: data_explorer
     </script>
 
     <?php
+
+    $remote_files_path = "http://localhost//wp-content/plugins/wp_dotstat_data_explorer";
+    //$host="http://localhost//wp-content/plugins/wp_dotstat_data_explorer";
+    //$$remote_files_path="https://data.unicef.org/wp-content/plugins/dataexplorer_maps";
+
+
     //We're in single page, jsut one post at the time, fix this while loop?
     while (have_posts()) {
         the_post();
@@ -54,14 +60,11 @@ Template Name: data_explorer
         $unicef_settings = '{"indicatorProfileUrl": "' . $indicator_profile_url . '", "helpUrl": "' . $help_url . '" }';
         echo ('<script>unicef_settings = ' . $unicef_settings . '</script>');
 
-        /*$map_settings = '{"ref_area_dim_id":"REF_AREA",
-            "geojson_url": "https://data.unicef.org/wp-content/plugins/dataexplorer_maps/maps/CNTR_RG_20M_2020_4326.json",
-        }';*/
-        /*$map_settings = '{"ref_area_dim_id":"REF_AREA", "geojson_url": "http://localhost/wp-content/plugins/wp_dotstat_data_explorer/CNTR_RG_20M_2020_4326.json"}';*/
-        //http://localhost/wp-content/plugins/wp_dotstat_data_explorer/js/de_settings/settings.js?v
-        $map_settings = '{"ref_area_dim_id":"REF_AREA",
-            "geojson_url": "http://seotest.buzz/wp-content/plugins/dataexplorer_maps/maps/CNTR_RG_20M_2020_4326.js",
+        $map_settings = '{
+            "UNICEF:GLOBAL_DATAFLOW":{"ref_area_dim_id":"REF_AREA", "geojson_url": "' . $remote_files_path . '/maps/CNTR_RG_20M_2020_4326.json"},
+            "UNICEF:CME":{"ref_area_dim_id":"REF_AREA", "geojson_url": "' . $remote_files_path . '/maps/test.json"}
         }';
+
         echo ('<script>map_settings = ' . $map_settings . '</script>');
 
         $hierarchy = get_post_meta(get_the_ID(), 'de_hierarchy_cfg', true);
@@ -153,20 +156,17 @@ Template Name: data_explorer
     <?php } ?>
 </main>
 
-<?php $res_v = "1.03" ?>
+<?php $res_v = "1.04" ?>
 
+<link rel="stylesheet" href="<?php echo ($remote_files_path); ?>/css/data_explorer.css?v=<?php echo ($res_v); ?>" />
+<link rel="stylesheet" href="<?php echo ($remote_files_path); ?>/de/static/css/main.chunk.css?v=<?php echo ($res_v); ?>" />
+<link rel="stylesheet" href="<?php echo ($remote_files_path); ?>/de/static/css/2.chunk.css?v=<?php echo ($res_v); ?>" />
 
-<!--<link rel="stylesheet" href="http://localhost/wp-content/plugins/wp_dotstat_data_explorer/css/data_explorer.css?v=<?php echo ($res_v); ?>" />-->
-<link rel="stylesheet" href="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/css/data_explorer.css?v=<?php echo ($res_v); ?>" />
-<link rel="stylesheet" href="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/de/static/css/main.chunk.css?v=<?php echo ($res_v); ?>" />
-<link rel="stylesheet" href="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/de/static/css/2.chunk.css?v=<?php echo ($res_v); ?>" />
-
-<!--<script src="http://localhost/wp-content/plugins/wp_dotstat_data_explorer/js/de_settings/settings.js?v=<?php echo ($res_v); ?>"></script>-->
-<script src="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/js/de_settings/settings.js?v=<?php echo ($res_v); ?>"></script>
-<script src="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/js/url_changer.js?v=<?php echo ($res_v); ?>"></script>
-<script src="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/de/static/js/bundle.js?v=<?php echo ($res_v); ?>"></script>
-<script src="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/de/static/js/2.chunk.js?v=<?php echo ($res_v); ?>"></script>
-<script src="https://data.unicef.org/wp-content/plugins/dataexplorer_maps/de/static/js/main.chunk.js?v=<?php echo ($res_v); ?>"></script>
+<script src="<?php echo ($remote_files_path); ?>/js/de_settings/settings.js?v=<?php echo ($res_v); ?>"></script>
+<script src="<?php echo ($remote_files_path); ?>/js/url_changer.js?v=<?php echo ($res_v); ?>"></script>
+<script src="<?php echo ($remote_files_path); ?>/de/static/js/bundle.js?v=<?php echo ($res_v); ?>"></script>
+<script src="<?php echo ($remote_files_path); ?>/de/static/js/2.chunk.js?v=<?php echo ($res_v); ?>"></script>
+<script src="<?php echo ($remote_files_path); ?>/de/static/js/main.chunk.js?v=<?php echo ($res_v); ?>"></script>
 
 
 <?php

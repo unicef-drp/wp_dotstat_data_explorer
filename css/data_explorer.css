@@ -378,6 +378,29 @@
     max-width: 800px;
 }
 
+.mapFiltersGroup{
+    margin: 16px 0 12px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.mapSubfilterGroup{
+    display: flex;
+    margin: 0 8px 8px 0;
+}
+
+.mapSubfilterGroup label{
+    margin-right: 6px;
+    flex-grow: 1;
+    font-weight: bold;
+    flex-basis: 0;
+}
+
+.mapSubfilterSel{
+    flex-grow: 3;
+    flex-basis: 0;
+}
+
 /* Without this fix the map does not appear*/
 #de_map .leaflet-image-layer, 
 #de_map .leaflet-layer, 
