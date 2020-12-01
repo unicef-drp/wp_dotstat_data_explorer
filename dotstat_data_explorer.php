@@ -64,6 +64,7 @@ function de_display_meta_box($de)
 	$backtype_radio_value = get_post_meta($de->ID, 'backtype_radio_value', true);
 	$de_hierarchy_cfg = get_post_meta($de->ID, 'de_hierarchy_cfg', true);
 	$de_forced_dims = get_post_meta($de->ID, 'de_forced_dims', true);
+	$de_hide_total_labels = get_post_meta($de->ID, 'de_hide_total_labels', true);
 ?>
 	<table>
 		<tr>
@@ -75,10 +76,10 @@ function de_display_meta_box($de)
 			<td>API URL</td>
 			<td>​<textarea name="de_api_url_name" rows="10" cols="80"><?php echo $api_url; ?></textarea></td>
 			<td>e.g: {fusion: { url: "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest",
-hasRangeHeader: !0,
-supportsReferencePartial: !1
- }}
-</td>
+				hasRangeHeader: !0,
+				supportsReferencePartial: !1
+				}}
+			</td>
 		</tr>
 		<tr>
 			<td>Backend</td>
@@ -104,6 +105,10 @@ supportsReferencePartial: !1
 			<td>Forced dims</td>
 			<td>​<textarea name="de_forced_dims" rows="10" cols="80"><?php echo $de_forced_dims; ?></textarea></td>
 			<td>e.g: {REF_AREA:"AGF"}</td>
+		</tr>
+		<tr>
+			<td>Hide Total label</td>
+			<td><input name="de_hide_total_labels" type="checkbox" <?php if ($de_hide_total_labels=='on'){echo("checked");} ?>></td>
 		</tr>
 	</table>
 <?php
@@ -135,12 +140,17 @@ function de_add_fields($de_id, $de_fields)
 		// Store data in post meta table if present in post data
 		if (isset($_POST['de_hierarchy_cfg'])) {
 			update_post_meta($de_id, 'de_hierarchy_cfg', $_POST['de_hierarchy_cfg']);
-		}		
+		}
 		if (isset($_POST['de_forced_dims'])) {
 			update_post_meta($de_id, 'de_forced_dims', $_POST['de_forced_dims']);
-		}
-		else{
+		} else {
 			update_post_meta($de_id, 'de_forced_dims', "");
+		}
+
+		if (isset($_POST['de_hide_total_labels'])) { // Input var okay.
+			update_post_meta($de_id, 'de_hide_total_labels', esc_html($_POST['de_hide_total_labels'])); // Input var okay.
+		} else {
+			update_post_meta($de_id, 'de_hide_total_labels', '');
 		}
 	}
 }

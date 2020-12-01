@@ -43,9 +43,9 @@ Template Name: data_explorer
 
     <?php
 
-    $remote_files_path = "http://localhost//wp-content/plugins/wp_dotstat_data_explorer";
-    //$host="http://localhost//wp-content/plugins/wp_dotstat_data_explorer";
-    //$$remote_files_path="https://data.unicef.org/wp-content/plugins/dataexplorer_maps";
+    //$remote_files_path = "http://localhost//wp-content/plugins/wp_dotstat_data_explorer";
+    //$remote_files_path="https://data.unicef.org/wp-content/plugins/dataexplorer_maps";
+    $remote_files_path="http://seotest.buzz/wp-content/plugins/dataexplorer_maps";
 
 
     //We're in single page, jsut one post at the time, fix this while loop?
@@ -56,8 +56,13 @@ Template Name: data_explorer
 
         $indicator_profile_url = esc_attr(get_option('de_indicator_profile_url', ''));
         $help_url = esc_attr(get_option('de_help_url', ''));
+        $de_hide_total_labels = 0;
+        if (get_post_meta(get_the_ID(), 'de_hide_total_labels', true) == "on") {
+            $de_hide_total_labels = 1;
+        }
 
-        $unicef_settings = '{"indicatorProfileUrl": "' . $indicator_profile_url . '", "helpUrl": "' . $help_url . '" }';
+        $unicef_settings = '{"indicatorProfileUrl": "' . $indicator_profile_url . '", "helpUrl": "' . $help_url . '", "hideTotalLabel":' . $de_hide_total_labels . '}';
+        //$unicef_settings = '{"indicatorProfileUrl": "' . $indicator_profile_url . '", "helpUrl": "' . $help_url . '" }';
         echo ('<script>unicef_settings = ' . $unicef_settings . '</script>');
 
         $map_settings = '{
@@ -92,7 +97,6 @@ Template Name: data_explorer
 
     $backendId =  get_post_meta(get_the_ID(), 'backtype_radio_value', true);
 
-    //$script_dataflow = '<script>var DATAFLOW = {datasourceId:"fusion", agencyId:"$agency_id", dataflowId:"$dataflow", version:"$version", dataquery:"$dataquery", period: [$startPeriod, $endPeriod], backendId:"$backendId"}</script>';
     $script_dataflow = '<script>var DATAFLOW = {datasourceId:"fusion", agencyId:"$agency_id", dataflowId:"$dataflow", version:"$version", dataquery:"$dataquery", period: [$startPeriod, $endPeriod], backendId:"$backendId"';
 
     if ($de_forced_dims != "") {
@@ -146,7 +150,6 @@ Template Name: data_explorer
     <div id="root">
     </div>
 
-
     <?php if ($help_url != null && $help_url != "") { ?>
         <div id="div_de_help" class="pull-right">
             <div class="closebtn" onclick="document.getElementById('div_de_help').style.display='none';"><i class="material-icons md-18">clear</i></div>
@@ -156,7 +159,7 @@ Template Name: data_explorer
     <?php } ?>
 </main>
 
-<?php $res_v = "1.04" ?>
+<?php $res_v = "1.09" ?>
 
 <link rel="stylesheet" href="<?php echo ($remote_files_path); ?>/css/data_explorer.css?v=<?php echo ($res_v); ?>" />
 <link rel="stylesheet" href="<?php echo ($remote_files_path); ?>/de/static/css/main.chunk.css?v=<?php echo ($res_v); ?>" />
