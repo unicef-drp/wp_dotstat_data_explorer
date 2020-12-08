@@ -378,6 +378,16 @@
     max-width: 800px;
 }
 
+#de_map_message{
+    height: 500px;
+    padding: 16px;
+    background-color: #ddd !important;
+}
+
+#de_map_message div{
+    margin-top: 16px;
+}
+
 .mapFiltersGroup{
     margin: 16px 0 12px 0;
     display: flex;
@@ -414,5 +424,6 @@
 #de_map .leaflet-zoom-box {
     position: relative;
  }
+
 
  /*Leaflet end*/
