@@ -66,6 +66,8 @@ function de_display_meta_box($de)
 	$de_forced_dims = get_post_meta($de->ID, 'de_forced_dims', true);
 	$de_hide_total_labels = get_post_meta($de->ID, 'de_hide_total_labels', true);
 ?>
+<div><a href="http://localhost/de-configurator/">Configurator</a></div>
+
 	<table>
 		<tr>
 			<td>Page title</td>

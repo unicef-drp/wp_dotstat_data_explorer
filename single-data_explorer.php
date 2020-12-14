@@ -43,16 +43,18 @@ Template Name: data_explorer
 
     <?php
 
-    //$remote_files_path = "http://localhost/wp-content/plugins/wp_dotstat_data_explorer";
+    $remote_files_path = "http://localhost/wp-content/plugins/wp_dotstat_data_explorer_cfg";
     //$remote_files_path="https://data.unicef.org/wp-content/plugins/dataexplorer_maps";
-    $remote_files_path="https://seotest.buzz/wp-content/plugins/dataexplorer_maps";
+    //$remote_files_path="https://seotest.buzz/wp-content/plugins/dataexplorer_maps";
+
+
 
 
     //We're in single page, jsut one post at the time, fix this while loop?
     while (have_posts()) {
         the_post();
         $api_url =  get_post_meta(get_the_ID(), 'api_url', true);
-        echo ('<script>SETTINGS_override = ' . $api_url . '</script>');
+        //echo ('<script>SETTINGS_override = ' . $api_url . '</script>');
 
         $indicator_profile_url = esc_attr(get_option('de_indicator_profile_url', ''));
         $help_url = esc_attr(get_option('de_help_url', ''));
@@ -63,14 +65,14 @@ Template Name: data_explorer
 
         $unicef_settings = '{"indicatorProfileUrl": "' . $indicator_profile_url . '", "helpUrl": "' . $help_url . '", "hideTotalLabel":' . $de_hide_total_labels . '}';
         //$unicef_settings = '{"indicatorProfileUrl": "' . $indicator_profile_url . '", "helpUrl": "' . $help_url . '" }';
-        echo ('<script>unicef_settings = ' . $unicef_settings . '</script>');
+        //echo ('<script>unicef_settings = ' . $unicef_settings . '</script>');
 
         $map_settings = '{
             "UNICEF:GLOBAL_DATAFLOW":{"ref_area_dim_id":"REF_AREA", "geojson_url": "' . $remote_files_path . '/maps/CNTR_RG_20M_2020_4326.json"},
             "UNICEF:CME":{"ref_area_dim_id":"REF_AREA", "geojson_url": "' . $remote_files_path . '/maps/test.json"}
         }';
 
-        echo ('<script>map_settings = ' . $map_settings . '</script>');
+        //echo ('<script>map_settings = ' . $map_settings . '</script>');
 
         $hierarchy = get_post_meta(get_the_ID(), 'de_hierarchy_cfg', true);
         if ($hierarchy != null && trim($hierarchy) != "") {
@@ -118,7 +120,9 @@ Template Name: data_explorer
 
     $script_dataflow = strtr($script_dataflow, $dataflow_vars);
 
-    echo ($script_dataflow);
+    //echo ($script_dataflow);
+
+    echo ("<script>var remote_files_path=" . $remote_files_path . " </script>");
 
     ?>
 
@@ -165,18 +169,44 @@ Template Name: data_explorer
 <link rel="stylesheet" href="<?php echo ($remote_files_path); ?>/de/static/css/main.chunk.css?v=<?php echo ($res_v); ?>" />
 <link rel="stylesheet" href="<?php echo ($remote_files_path); ?>/de/static/css/2.chunk.css?v=<?php echo ($res_v); ?>" />
 
+
+
 <script src="<?php echo ($remote_files_path); ?>/js/de_settings/settings.js?v=<?php echo ($res_v); ?>"></script>
 <script src="<?php echo ($remote_files_path); ?>/js/url_changer.js?v=<?php echo ($res_v); ?>"></script>
-<script src="<?php echo ($remote_files_path); ?>/de/static/js/bundle.js?v=<?php echo ($res_v); ?>"></script>
-<script src="<?php echo ($remote_files_path); ?>/de/static/js/2.chunk.js?v=<?php echo ($res_v); ?>"></script>
-<script src="<?php echo ($remote_files_path); ?>/de/static/js/main.chunk.js?v=<?php echo ($res_v); ?>"></script>
 
 
+
+<script>
+    var remote_files_path = "<?php echo ($remote_files_path); ?>"
+</script>
+<script>
+    var myUrl = document.location.host + document.location.pathname;
+    var myUrlMD5 = calculateMD5(myUrl);
+    console.log("MY URL")
+    console.log(myUrl);
+    console.log(myUrlMD5);
+
+
+    loadJson(remote_files_path + "/configs/" + myUrlMD5 + ".json", function(data) {
+        /*
+        console.log(data)
+        var node=document.createElement('script');
+        node.innerHTML="var react_settings="+data;
+        document.body.appendChild(node);
+        console.log(node);
+        var node=document.createElement('script');
+        var val_dataflow=JSON.parse(data)["DATAFLOW"];
+        
+
+        console.log("var DATAFLOW="+JSON.stringify(val_dataflow));
+        console.log("PPPP2")
+        node.innerHTML="var DATAFLOW="+JSON.stringify(val_dataflow);
+        document.body.appendChild(node);
+        console.log(node);
+        */
+        addReactScripts(JSON.parse(data), remote_files_path, "1.00");
+    });
+</script>
 <?php
 wp_reset_query();
 get_footer();
-
-
-/*<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
-integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
-crossorigin=""/>*/
