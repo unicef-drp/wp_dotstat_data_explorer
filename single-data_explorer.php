@@ -79,7 +79,7 @@ Template Name: data_explorer
     $qs_version = sanitize_text_field(get_query_var('ver'));
     $dataquery = sanitize_text_field(get_query_var('dq'));
 
-    $dataquery = $dataquery . "/";
+    //$dataquery = $dataquery . "/";
 
     $startPeriod = sanitize_text_field(get_query_var('startPeriod'));
     $endPeriod = sanitize_text_field(get_query_var('endPeriod'));
