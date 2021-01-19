@@ -86,6 +86,9 @@ Template Name: data_explorer
     if ($endPeriod == "") {
         $endPeriod = date("Y");
     }
+    if ($startPeriod == "") {
+        $startPeriod = date("Y")-10;
+    }
 
     $backendId =  get_post_meta(get_the_ID(), 'backtype_radio_value', true);
 
