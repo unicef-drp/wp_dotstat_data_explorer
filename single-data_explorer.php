@@ -22,7 +22,7 @@ Template Name: data_explorer
 
     $remote_files_path = "http://localhost/wp-content/plugins/wp_dotstat_data_explorer_cfg";
     //$remote_files_path="https://data.unicef.org/wp-content/plugins/wp_dotstat_data_explorer_cfg";
-    //$remote_files_path="https://seotest.buzz/wp-content/plugins/dataexplorer_maps";
+    //$remote_files_path="http://seotest.buzz/wp-content/plugins/dataexplorer_maps";
 
 
 
