@@ -115,6 +115,7 @@ function de_custom_query_vars_filter($vars)
 	$vars[] .= 'dq';
 	$vars[] .= 'startPeriod';
 	$vars[] .= 'endPeriod';
+	$vars[] .= 'lastnobservations';
 
 	return $vars;
 }
