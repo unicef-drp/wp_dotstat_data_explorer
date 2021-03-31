@@ -59,51 +59,15 @@ function de_add_metabox()
 
 function de_display_meta_box($de)
 {
-	$de_page_title = get_post_meta($de->ID, 'de_page_title', true);
-	$api_url = get_post_meta($de->ID, 'api_url', true);
-	$backtype_radio_value = get_post_meta($de->ID, 'backtype_radio_value', true);
-	$de_hierarchy_cfg = get_post_meta($de->ID, 'de_hierarchy_cfg', true);
-	$de_forced_dims = get_post_meta($de->ID, 'de_forced_dims', true);
+	$de_config_id=get_post_meta($de->ID, 'de_config_id', true);
 ?>
+<!--<div><a href="http://localhost/de-configurator/">Configurator</a></div>-->
+
 	<table>
 		<tr>
-			<td>Page title</td>
-			<td>​<input style="width: 500px" name="de_page_title" type="text" value="<?php echo $de_page_title; ?>"></input></td>
-			<td>The page title</td>
-		</tr>
-		<tr>
-			<td>API URL</td>
-			<td>​<textarea name="de_api_url_name" rows="10" cols="80"><?php echo $api_url; ?></textarea></td>
-			<td>e.g: {fusion: { url: "https://sdmx.data.unicef.org/ws/public/sdmxapi/rest",
-hasRangeHeader: !0,
-supportsReferencePartial: !1
- }}
-</td>
-		</tr>
-		<tr>
-			<td>Backend</td>
-			<td>
-				<label>
-					<input type="radio" name="de_backtype_radio_value" value="DOTSTAT" <?php checked($backtype_radio_value, 'DOTSTAT'); ?>>
-					<?php esc_attr_e('DOTSTAT'); ?>
-				</label>
-				<br />
-				<label>
-					<input type="radio" name="de_backtype_radio_value" value="FUSION" <?php checked($backtype_radio_value, 'FUSION'); ?>>
-					<?php esc_attr_e('FUSION'); ?>
-				</label>
-			</td>
-			<td></td>
-		</tr>
-		<tr>
-			<td>Hierarchy</td>
-			<td>​<textarea name="de_hierarchy_cfg" rows="10" cols="80"><?php echo $de_hierarchy_cfg; ?></textarea></td>
-			<td>e.g: {agencyId:"UNICEF", id:"REGIONS_HIERARCHY"}</td>
-		</tr>
-		<tr>
-			<td>Forced dims</td>
-			<td>​<textarea name="de_forced_dims" rows="10" cols="80"><?php echo $de_forced_dims; ?></textarea></td>
-			<td>e.g: {REF_AREA:"AGF"}</td>
+			<td>Configuration ID</td>
+			<td>​<input style="width: 300px" name="de_config_id" type="text" value="<?php echo $de_config_id; ?>"></input></td>
+			<td>The configuration ID</td>
 		</tr>
 	</table>
 <?php
@@ -117,30 +81,8 @@ function de_add_fields($de_id, $de_fields)
 	// Check post type for data explorers
 	if ($de_fields->post_type == 'data_explorer') {
 		// Store data in post meta table if present in post data
-		if (isset($_POST['de_page_title']) && $_POST['de_page_title'] != '') {
-			update_post_meta($de_id, 'de_page_title', $_POST['de_page_title']);
-		}
-
-		// Store data in post meta table if present in post data
-		if (isset($_POST['de_api_url_name']) && $_POST['de_api_url_name'] != '') {
-			update_post_meta($de_id, 'api_url', $_POST['de_api_url_name']);
-		}
-
-		if (isset($_POST['de_backtype_radio_value'])) { // Input var okay.
-			update_post_meta($de_id, 'backtype_radio_value', sanitize_text_field(wp_unslash($_POST['de_backtype_radio_value']))); // Input var okay.
-		} else {
-			update_post_meta($de_id, 'backtype_radio_value', 'DOTSTAT');
-		}
-
-		// Store data in post meta table if present in post data
-		if (isset($_POST['de_hierarchy_cfg'])) {
-			update_post_meta($de_id, 'de_hierarchy_cfg', $_POST['de_hierarchy_cfg']);
-		}		
-		if (isset($_POST['de_forced_dims'])) {
-			update_post_meta($de_id, 'de_forced_dims', $_POST['de_forced_dims']);
-		}
-		else{
-			update_post_meta($de_id, 'de_forced_dims', "");
+		if (isset($_POST['de_config_id']) && $_POST['de_config_id'] != '') {
+			update_post_meta($de_id, 'de_config_id', $_POST['de_config_id']);
 		}
 	}
 }
@@ -173,85 +115,10 @@ function de_custom_query_vars_filter($vars)
 	$vars[] .= 'dq';
 	$vars[] .= 'startPeriod';
 	$vars[] .= 'endPeriod';
+	$vars[] .= 'lastnobservations';
 
 	return $vars;
 }
-
-//Adds the Data explorer javascripts and css
-add_action('wp_enqueue_scripts', 'de_add_data_explorer');
-
-function de_add_data_explorer()
-{
-	if (is_single() && get_post_type() == 'data_explorer') {
-
-		$js_url = plugins_url('js/', __FILE__);
-		wp_enqueue_script('de_settings', $js_url . 'de_settings/settings.js', NULL, 1.08, true);
-
-		$static_path = plugin_dir_path(__FILE__) . 'de/static/';
-
-		$css_url = plugins_url('de/static/css/', __FILE__);
-		$js_url = plugins_url('de/static/js/', __FILE__);
-
-		$css_list = glob($static_path . "css/*.css");
-		$js_list = glob($static_path . "js/*.js");
-		//att the styles
-		for ($i = 0; $i < count($css_list); $i++) {
-			//remove the main as it seems to contain body elements already present in the hosting Wordpress page
-			//if (strpos(basename($css_list[$i]), "main") === false) {
-			wp_enqueue_style('de_style' . $i, $css_url . basename($css_list[$i]));
-			//}
-		}
-
-		//add the js files in the same order they're added by react in the main page
-		$js_load_order = array();
-		$pos_count = 1;
-
-		//sort them
-		for ($i = 0; $i < count($js_list); $i++) {
-			$baseN = basename($js_list[$i]);
-			if (strpos($baseN, 'runtime~') !== false) {
-				$js_load_order[0] = $baseN;
-			} elseif (strpos($baseN, 'main.') !== false) {
-				$js_load_order[count($js_list) - 1] = $baseN;
-			} else {
-				$js_load_order[$pos_count] = $baseN;
-				$pos_count++;
-			}
-		}
-
-		//add the first one, jquery is a dependency
-		wp_enqueue_script('de_script0', $js_url . $js_load_order[0], array('jquery', 'de_settings',), NULL, true);
-		//add the remaining ones(each one depends on the first one)
-		for ($i = 1; $i < count($js_list); $i++) {
-			wp_enqueue_script('de_script' . $i, $js_url . $js_load_order[$i], array('de_script0'), NULL, true);
-		}
-
-		/*for ($i = 0; $i < count($js_list); $i++) {
-			wp_enqueue_script('de_script' . $i, $js_url . basename($js_list[$i]), array('jquery'), NULL, true);
-		}*/
-	}
-}
-
-//Adds the resources needed by the wp page
-//add the scripts and css only if the post type is data_explorer
-add_action('wp_enqueue_scripts', 'de_enqueue_style');
-
-function de_enqueue_style()
-{
-	if (is_single() && get_post_type() == 'data_explorer') {
-
-		$js_version = 1.21;
-
-		$css_url = plugins_url('css/', __FILE__);
-		wp_enqueue_style('data_expl_css', $css_url . 'data_explorer.css', array(), $js_version);
-
-		$js_url = plugins_url('js/', __FILE__);
-		wp_enqueue_script('de_url_changer', $js_url . 'url_changer.js', array(), $js_version, true);
-		// wp_enqueue_script('related_search', $js_url . 'related_search.js', array('jquery', 'algoliasearchLite', 'algolia_instantsearch'), NULL, true);
-	}
-}
-
-
 
 
 
@@ -301,21 +168,14 @@ function de_settings_init()
 
 
 	// register the setting (option group, setting id)
-	register_setting('de-settings-page', 'de_indicator_profile_url');
-	register_setting('de-settings-page', 'de_help_url');
+	register_setting('de-settings-page', 'de_remote_files_url');
 	//id of the settings field, title, callback function, page on which settings display, section on which to show settings
-	add_settings_field('de_indicator_profile_url', 'Indicator profile URL', 'de_indicator_profile_url_callb', 'de-settings-page', 'de-settings-section');
-	add_settings_field('de_help_url', 'Help URL', 'de_help_url_callb', 'de-settings-page', 'de-settings-section');
+	add_settings_field('de_remote_files_url', 'Remote files URL', 'de_remote_files_url_callb', 'de-settings-page', 'de-settings-section');
 }
 
-function de_indicator_profile_url_callb()
+function de_remote_files_url_callb()
 {
-	$de_indicator_profile_url = esc_attr(get_option('de_indicator_profile_url', ''));
-	echo ("<div><input id=\"de_indicator_profile_url\" type=\"text\" name=\"de_indicator_profile_url\" size=\"100\" value=\"" . $de_indicator_profile_url . "\"></div>");
-}
-function de_help_url_callb()
-{
-	$de_help_url = esc_attr(get_option('de_help_url', ''));
-	echo ("<div><input id=\"de_help_url\" type=\"text\" name=\"de_help_url\" size=\"80\" value=\"" . $de_help_url . "\"></div>");
+	$de_remote_files_url = esc_attr(get_option('de_remote_files_url', ''));
+	echo ("<div><input id=\"de_remote_files_url\" type=\"text\" name=\"de_remote_files_url\" size=\"80\" value=\"" . $de_remote_files_url . "\"></div>");
 }
 ?>
