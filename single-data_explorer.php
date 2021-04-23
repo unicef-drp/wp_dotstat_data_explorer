@@ -21,14 +21,10 @@ Template Name: data_explorer
     <?php
     $remote_files_path = esc_attr(get_option('de_remote_files_url', ''));
     $de_config_id =  get_post_meta(get_the_ID(), 'de_config_id', true);
-    //$remote_files_path = "http://localhost/wp-content/plugins/wp_dotstat_data_explorer_cfg";
+
     $remote_files_path="https://data.unicef.org/wp-content/plugins/wp_dotstat_data_explorer_cfg";
+    //$remote_files_path = "http://localhost/wp-content/plugins/wp_dotstat_data_explorer_cfg";
     //$remote_files_path="http://seotest.buzz/wp-content/plugins/dataexplorer_maps";
-
-
-
-
-
 
 
     //We're in single page, jsut one post at the time, fix this while loop?
