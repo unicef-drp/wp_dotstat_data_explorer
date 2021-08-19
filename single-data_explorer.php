@@ -35,9 +35,6 @@ Template Name: data_explorer
         $startPeriod = date("Y")-10;
     }
 
-
-    echo ("<script>var remote_files_path=\"" . $remote_files_path . "\" </script>");
-
     ?>
 
     <!--Page title-->
