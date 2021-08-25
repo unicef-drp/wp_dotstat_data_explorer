@@ -39,22 +39,22 @@ https://your_server.org/wp-content/plugins/wp_dotstat_data_explorer_cfg you can 
 
 ### Clone the second repository
 Download or clone the contents of the second repository:\
-https://github.com/unicef-drp/wp_dotstat_data_explorer\
+https://github.com/unicef-drp/wp_dotstat_data_explorer \
 The repository contains the Wordpress plugin, the files must be copied in the Wordpress' plugins directory (typically wp-content\plugins).
 
 ### Activating and configuring the plugin in Wordpress
 Open the Wordpress admin page, open the "Plugins" menu.\
-The “Data Explorer” plugin should appear in the list of plugins, click on “Activate”\
-After the activation the “Data Explorers” menu item should appear, the plugin also adds an item in the “Settings” menu.\
-Open the “Settings” menu and click on “Data Explorer”\
-In the “Remote files URL” field paste the URL to the files hosted on the web server, in our previous example the URL to paste was https://your_server.org/wp-content/plugins/wp_dotstat_data_explorer_cfg
+The "Data Explorer" plugin should appear in the list of plugins, click on "Activate"\
+After the activation the "Data Explorers" menu item should appear, the plugin also adds an item in the "Settings" menu.\
+Open the "Settings" menu and click on "Data Explorer"\
+In the "Remote files URL" field paste the URL to the files hosted on the web server, in our previous example the URL to paste was https://your_server.org/wp-content/plugins/wp_dotstat_data_explorer_cfg
 
 ### Adding a Data Explorer page
 Now that our plugin is added and configured to point to the right server, you can add a Data Explorer page\
-Open the Wordpress admin page, click on “Data Explorers” and “Add new”.\
+Open the Wordpress admin page, click on "Data Explorers" and "Add new".\
 Add a title for the page in the top field.\
-Paste the name of the configuration file that you created during the “Create a configuration file” step without the .json extension (the name of the file is the configuration ID).\
-E.g. if you created a UNICEF.json file then the configuration id is “UNICEF”
+Paste the name of the configuration file that you created during the "Create a configuration file" step without the .json extension (the name of the file is the configuration ID).\
+E.g. if you created a UNICEF.json file then the configuration id is "UNICEF"
 
 ### Testing the data explorer
 After the configuration in saved in the Wordpress admin the permalink should be available. Pointing your browser to the Data Explorer page just created should show the Data Explorer with some data.
@@ -73,8 +73,8 @@ The configuration file is pointed by the Data Explorer page and controls some as
 The following list describes the fields
 - origin: The URL of the Data Explorer
 - SETTINGS_override.{registry_id}.url: The url to the registry. The registry_id value is arbitrary and can be assigned to identify a specific registry
-- unicef_settings.indicatorProfileUrl: It will show an icon next to the Indicators if it contains a link to an “indicator profiles” page (a page providing information on the indicator). Clicking on the icon will open the Indicator profiles page. No icon is shown if the field is empty
-- unicef_settings.hideTotalLabel: If the value is 1 any cell containing the value “Total” (SDMX code = _T) does not show the Total label. If the value is 0 all the Total (SDMX code = _T) are shown
+- unicef_settings.indicatorProfileUrl: It will show an icon next to the Indicators if it contains a link to an "indicator profiles" page (a page providing information on the indicator). Clicking on the icon will open the Indicator profiles page. No icon is shown if the field is empty
+- unicef_settings.hideTotalLabel: If the value is 1 any cell containing the value "Total" (SDMX code = _T) does not show the Total label. If the value is 0 all the Total (SDMX code = _T) are shown
 - unicef_settings.roundData: The number of decimal digits to round to (0=no rounding)
 - unicef_settings.showDataflowNavigator: Used by UNICEF to allow the navigation between Dataflows, should be set to 0
 - unicef_settings. stickyDims: Used by UNICEF to allow the navigation between Dataflows, should be set to []
