@@ -16,7 +16,7 @@ Many parts of the Data Explorer are configurable (e.g. the rounding rules, how t
 The project is hosted in two Github repositories, both repositories must be downloaded to install the plugin.
 ### Clone the first repository
 Download or clone the contents of the first repository:\
-https://github.com/unicef-drp/wp_dotstat_data_explorer_cfg\
+https://github.com/unicef-drp/wp_dotstat_data_explorer_cfg \
 This repository contains the Data Explorer application and all the configuration files.
 ### Create a configuration file
 Create a configuration file (you can copy one of the existing files in the "configs" folder as a starting point).\
