@@ -96,6 +96,6 @@ An example could be the list of European country codes if we want to show the ma
 - timeDimensionOrder: asc: for asending, desc: for descending
 
 ## Known issues
-## The Plugin for Drupal
+### The Plugin for Drupal
 The plugin can be easily translated to work in a Drupal CMS, UNICEF tested the solution successfully but maintaining the Drupal version is not in the plans for now.
 
