@@ -60,16 +60,10 @@ function de_add_metabox()
 function de_display_meta_box($de)
 {
 	$de_config_id=get_post_meta($de->ID, 'de_config_id', true);
-	$de_page_title=get_post_meta($de->ID, 'de_page_title', true);
 ?>
 <!--<div><a href="http://localhost/de-configurator/">Configurator</a></div>-->
 
 	<table>
-		<tr>
-			<td>Page title</td>
-			<td>​<input style="width: 300px" name="de_page_title" type="text" value="<?php echo $de_page_title; ?>"></input></td>
-			<td>The title of the page</td>
-		</tr>
 		<tr>
 			<td>Configuration ID</td>
 			<td>​<input style="width: 300px" name="de_config_id" type="text" value="<?php echo $de_config_id; ?>"></input></td>
@@ -87,9 +81,6 @@ function de_add_fields($de_id, $de_fields)
 	// Check post type for data explorers
 	if ($de_fields->post_type == 'data_explorer') {
 		// Store data in post meta table if present in post data
-		if (isset($_POST['de_page_title']) && $_POST['de_page_title'] != '') {
-			update_post_meta($de_id, 'de_page_title', $_POST['de_page_title']);
-		}
 		if (isset($_POST['de_config_id']) && $_POST['de_config_id'] != '') {
 			update_post_meta($de_id, 'de_config_id', $_POST['de_config_id']);
 		}
