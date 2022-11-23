@@ -15,7 +15,7 @@ Template Name: data_explorer
             <p><strong>Please update your browser and try again</strong></p>
             <i>ES script is needed</i>
         </div>
-        <div>
+    <div>
 </main>
 <main id="main" class="data-explorer" role="main">
     <article class="site-main status-publish hentry">
@@ -34,13 +34,12 @@ Template Name: data_explorer
             while (have_posts()) {
                 the_post();
             }
+
             if ($startPeriod == "") {
                 $startPeriod = date("Y")-10;
-            }
+            } ?>
 
-            ?>
-
-            <section class="wp-block-flag flag has-background has-breadcrumbs flag--reverse flag--compact alignfull">
+            <section style="--block--margin-bottom: 0" class="wp-block-flag flag has-background has-breadcrumbs flag--reverse flag--compact alignfull">
                 <div class="flag__inner">
                     <div class="flag__content">
                         <h1 class="flag__heading">
@@ -59,14 +58,11 @@ Template Name: data_explorer
                     </div>
                 </div>
             </section>
-
             <section id="root" class="wp-block alignfull">
             </section> 
         </div>
     </article>
 </main>
-
-
 
 <?php $date = date('YmdH', time());?>
 <script>
@@ -75,11 +71,10 @@ Template Name: data_explorer
     //var json_config = "GLOBAL_DATAFLOW";
     var json_config = "<?php echo ($de_config_id); ?>";
 </script>
-
 <script src="<?php echo ($remote_files_path .'/js/bundle.js?v=' . $date) ?>"></script>
-
-
-
+<style>
+.pt-slider-label { width: 40px; text-align: center; }
+</style>
 <?php
 wp_reset_query();
 get_footer();
